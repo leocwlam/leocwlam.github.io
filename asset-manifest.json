@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.js": "/static/js/main.85054244.chunk.js",
+    "main.js.map": "/static/js/main.85054244.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ce7ed91f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ce7ed91f.js.map",
+    "static/css/2.11829350.chunk.css": "/static/css/2.11829350.chunk.css",
+    "static/js/2.13f5ec54.chunk.js": "/static/js/2.13f5ec54.chunk.js",
+    "static/js/2.13f5ec54.chunk.js.map": "/static/js/2.13f5ec54.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.839a6b9011451d4d35e3c8027590ebb4.js": "/precache-manifest.839a6b9011451d4d35e3c8027590ebb4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/static/css/2.11829350.chunk.css.map",
+    "static/js/2.13f5ec54.chunk.js.LICENSE.txt": "/static/js/2.13f5ec54.chunk.js.LICENSE.txt",
+    "static/media/chat-room-gate.jpg": "/static/media/chat-room-gate.0765ef43.jpg",
+    "static/media/coffeeTime.mp4": "/static/media/coffeeTime.65567a04.mp4",
+    "static/media/contact-image.jpg": "/static/media/contact-image.f8ef500c.jpg",
+    "static/media/github.png": "/static/media/github.fbeb1605.png",
+    "static/media/javascript.png": "/static/media/javascript.84542742.png",
+    "static/media/not-found.jpg": "/static/media/not-found.67ecec6e.jpg",
+    "static/media/open-source-house.jpg": "/static/media/open-source-house.f3377053.jpg",
+    "static/media/plenio-light.jpg": "/static/media/plenio-light.e7c202b2.jpg",
+    "static/media/profile-leo.jpg": "/static/media/profile-leo.0bd89efb.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce7ed91f.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.13f5ec54.chunk.js",
+    "static/js/main.85054244.chunk.js"
+  ]
+}
