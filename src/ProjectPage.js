@@ -67,7 +67,7 @@ function ProjectPage() {
                         <h5>
                           <a
                             href="https://github.com/leocwlam/system-logger"
-                            target="_blank"
+                            target="_blank"  rel="noopener noreferrer"
                           >
                             https://github.com/leocwlam/system-logger
                           </a>
@@ -93,7 +93,7 @@ function ProjectPage() {
                         <h5>
                           <a
                             href="https://github.com/leocwlam/system-task"
-                            target="_blank"
+                            target="_blank" rel="noopener noreferrer"
                           >
                             https://github.com/leocwlam/system-task
                           </a>
@@ -120,7 +120,7 @@ function ProjectPage() {
                         <h5>
                           <a
                             href="https://github.com/leocwlam/system-service"
-                            target="_blank"
+                            target="_blank" rel="noopener noreferrer"
                           >
                             https://github.com/leocwlam/system-service
                           </a>
@@ -151,7 +151,7 @@ function ProjectPage() {
                         <h5>
                           <a
                             href="https://github.com/leocwlam/TS-startup-template"
-                            target="_blank"
+                            target="_blank" rel="noopener noreferrer"
                           >
                             https://github.com/leocwlam/TS-startup-template
                           </a>

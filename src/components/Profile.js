@@ -60,8 +60,10 @@ function Profile(props) {
         <li>If you know you can do better.. then do better</li>
         <li>Your best teacher is your last mistake</li>
         <li>Dream on Deamer</li>
-        <li>Trust your intuition.  You don't need to explain or justify your feeling to anyone, 
-          just trust your own inner guidance, it knows best.</li>
+        <li>
+          Trust your intuition. You don't need to explain or justify your
+          feeling to anyone, just trust your own inner guidance, it knows best.
+        </li>
       </Card.Text>
     );
   }
@@ -72,13 +74,13 @@ function Profile(props) {
         <Card.Text>
           <br />
           <Image src={emailIcon} thumbnail className="cardImageIcon" />
-          {' '}<a href={`mailto:{EMAILADDRESS}`} target="_blank">{' '}{EMAILADDRESS}</a>
+          {' '}<a href={`mailto:{EMAILADDRESS}`} target="_blank" rel="noopener noreferrer">{' '}{EMAILADDRESS}</a>
           <br />
           <Image src={linkedInIcon} thumbnail className="cardImageIcon" />
-          <a href={LINKEDINURL} target="_blank">{' '}LinkedIn</a>
+          <a href={LINKEDINURL} target="_blank" rel="noopener noreferrer">{' '}LinkedIn</a>
           <br />
           <Image src={githubIcon} thumbnail className="cardImageIcon" />
-          <a href={GITHUBURL} target="_blank">{' '}GitHub</a>
+          <a href={GITHUBURL} target="_blank" rel="noopener noreferrer">{' '}GitHub</a>
           <br />
         </Card.Text>
       );
@@ -93,7 +95,7 @@ function Profile(props) {
         <Carousel.Item className="carouselItem">
           <Card border="light" className="carouselCard">
             <Card.Header>Leo Lam</Card.Header>
-            <Card.Body>
+            <Card.Body style={{ width: '45rem' }}>
               {renderProfilePresent()}
               {renderContent()}
             </Card.Body>

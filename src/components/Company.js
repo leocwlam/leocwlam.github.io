@@ -19,7 +19,7 @@ function Company() {
         <Card.Header>Career path</Card.Header>
         <Card.Body>
           <Accordion defaultActiveKey="0">
-            <Card className="card" style={{width: "50rem"}}>
+            <Card className="card" style={{width: "42rem"}}>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
                   Uptake
@@ -29,7 +29,7 @@ function Company() {
                 <Card.Body>
                   <Card.Title>Uptake (Software Engineer)</Card.Title>
                   <Card.Subtitle>
-                    <a href={UPTAKEURL} target="_blank">
+                    <a href={UPTAKEURL} target="_blank" rel="noopener noreferrer">
                       {" "}
                       {UPTAKEURL}
                     </a>
@@ -46,13 +46,14 @@ function Company() {
                       Uptake’s core products include an Asset Performance
                       Management application and a fully managed platform.
                       <br />
+                      <br />
                       Detect machine issues early and prevent unplanned
                       downtime.
                   </Card.Text>
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card className="card" style={{width: "50rem"}}>
+            <Card className="card" style={{width: "42rem"}}>
               <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="1">
                   Oracle
@@ -62,20 +63,22 @@ function Company() {
                 <Card.Body>
                   <Card.Title>Oracle Eloqua (Senior Software Developer)</Card.Title>
                   <Card.Subtitle>
-                    <a href={ELOQUAURL} target="_blank">
+                    <a href={ELOQUAURL} target="_blank" rel="noopener noreferrer">
                       {" "}
                       {ELOQUAURL}
                     </a>
                   </Card.Subtitle>
                     <br />
                     Eloqua is a software as a service (SaaS) platform for
-                    marketing automation offered by Oracle <br />
+                    marketing automation offered by Oracle
                     that aims to help B2B marketers and organizations manage
                     marketing campaigns and sales lead generation.
                     <br />
                     <br />
                     Eloqua sends marketing advertisements to mobile devices,
-                    email, video and search results pages. <br />
+                    email, video and search results pages.
+                    <br />
+                    <br />
                     The platform promises increased conversions, sales and
                     understanding of customers.
                 </Card.Body>
