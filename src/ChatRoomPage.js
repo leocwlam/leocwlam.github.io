@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 
-import { Jumbotron as Jumbo, Container } from "react-bootstrap";
-import styled from 'styled-components';
+import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
+import styled from 'styled-components'
 
-import chatRoomGateImage from "./assets/backgrounds/chat-room-gate.jpg";
+import chatRoomGateImage from './assets/backgrounds/chat-room-gate.jpg'
 
 const Styles = styled.div`
   .jumboContentBase {
     background: url(${chatRoomGateImage}) no-repeat fixed center;
   }
-`;
+`
 
 function ChatRoomPage() {
   return (
@@ -20,7 +20,7 @@ function ChatRoomPage() {
         </Container>
       </Jumbo>
     </Styles>
-  );
+  )
 }
 
-export default ChatRoomPage;
+export default ChatRoomPage

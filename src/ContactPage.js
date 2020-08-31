@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
-import { Jumbotron as Jumbo, Container } from "react-bootstrap";
-import styled from 'styled-components';
+import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
+import styled from 'styled-components'
 
-import profileLeoImage from "./assets/backgrounds/profile-leo.jpg";
+import profileLeoImage from './assets/backgrounds/profile-leo.jpg'
 
-import Profile from './components/Profile';
+import Profile from './components/Profile'
 
 const Styles = styled.div`
   .jumboContentBase {
     background: url(${profileLeoImage}) no-repeat;
   }
-`;
+`
 
 function ContactPage() {
   return (
@@ -22,7 +22,7 @@ function ContactPage() {
         </Container>
       </Jumbo>
     </Styles>
-  );
+  )
 }
 
-export default ContactPage;
+export default ContactPage

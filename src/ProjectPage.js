@@ -1,12 +1,17 @@
-import React from "react";
+import React from 'react'
 
-import { Jumbotron as Jumbo, Container, Media } from "react-bootstrap";
+import { Jumbotron as Jumbo, Container, Media } from 'react-bootstrap'
 import Scrollspy from 'react-scrollspy'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import openSourceHouseImage from "./assets/backgrounds/open-source-house.jpg";
-import javascriptIcon from "./assets/icons/javascript.png";
-import typescriptIcon from "./assets/icons/typescript.png";
+import openSourceHouseImage from './assets/backgrounds/open-source-house.jpg'
+import javascriptIcon from './assets/icons/javascript.png'
+import typescriptIcon from './assets/icons/typescript.png'
+
+const ProjectType = {
+  JavaScript: 0,
+  TypeScript: 1
+}
 
 const Styles = styled.div`
   .jumboContentBase {
@@ -42,9 +47,48 @@ const Styles = styled.div`
        color: #007bff;
   //   color: #f1a07a;
   }
-`;
+`
 
 function ProjectPage() {
+
+  const projectIcon = (type) => {
+    if (type === ProjectType.JavaScript)
+      return javascriptIcon
+    else if (type === ProjectType.TypeScript)
+      return typescriptIcon
+    else
+      return ''
+  }
+
+  const projectSection = ({type, project, url, description}) =>  {
+    return (
+      <section id={project}>
+        <Media>
+          <img
+            width={64}
+            height={64}
+            className="mr-3"
+            src={projectIcon(type)}
+            alt={project}
+          />
+          <Media.Body>
+            <h4>{project}</h4>
+            <h5>
+              <a
+                href={url}
+                target="_blank"  rel="noopener noreferrer"
+              >
+                {url}
+              </a>
+            </h5>
+            <p>
+              {description}
+            </p>
+          </Media.Body>
+        </Media>
+      </section>
+    )
+  }
   return (
     <Styles>
       <Jumbo fluid className="jumboContentBase">
@@ -53,118 +97,36 @@ function ProjectPage() {
             <div>
               <section id="javaScript-area">
                 <div>
-                  <section id="system-logger">
-                    <Media>
-                      <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={javascriptIcon}
-                        alt="system-logger"
-                      />
-                      <Media.Body>
-                        <h4>system-logger</h4>
-                        <h5>
-                          <a
-                            href="https://github.com/leocwlam/system-logger"
-                            target="_blank"  rel="noopener noreferrer"
-                          >
-                            https://github.com/leocwlam/system-logger
-                          </a>
-                        </h5>
-                        <p>
-                          Provide the basic logging mechanism. It can be easy to
-                          inject the storage logic for those logging result.
-                        </p>
-                      </Media.Body>
-                    </Media>
-                  </section>
-                  <section id="system-task">
-                    <Media>
-                      <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={javascriptIcon}
-                        alt="system-task"
-                      />
-                      <Media.Body>
-                        <h4>system-task</h4>
-                        <h5>
-                          <a
-                            href="https://github.com/leocwlam/system-task"
-                            target="_blank" rel="noopener noreferrer"
-                          >
-                            https://github.com/leocwlam/system-task
-                          </a>
-                        </h5>
-                        <p>
-                          Provide the basic task framework to help initial task
-                          implementation. It can be easy to inject any logging
-                          mechanism and integrate with any service framework.
-                        </p>
-                      </Media.Body>
-                    </Media>
-                  </section>
-                  <section id="system-service">
-                    <Media>
-                      <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={javascriptIcon}
-                        alt="system-service"
-                      />
-                      <Media.Body>
-                        <h4>system-service</h4>
-                        <h5>
-                          <a
-                            href="https://github.com/leocwlam/system-service"
-                            target="_blank" rel="noopener noreferrer"
-                          >
-                            https://github.com/leocwlam/system-service
-                          </a>
-                        </h5>
-                        <p>
-                          Provide the basic service framework to help initial
-                          service implementation. It can be easy to inject any
-                          message framework and has built-in logging mechanism.
-                        </p>
-                      </Media.Body>
-                    </Media>
-                  </section>
+                  { projectSection({
+                    type: ProjectType.JavaScript,
+                    project: 'system-logger',
+                    url: 'https://github.com/leocwlam/system-logger',
+                    description: 'Provide the basic logging mechanism. It can be easy to inject the storage logic for those logging result.'
+                  }) }
+                  
+                  { projectSection({
+                    type: ProjectType.JavaScript,
+                    project: 'system-task',
+                    url: 'https://github.com/leocwlam/system-task',
+                    description: 'Provide the basic task framework to help initial task implementation. It can be easy to inject any logging mechanism and integrate with any service framework.'
+                  }) }
+
+                  { projectSection({
+                    type: ProjectType.JavaScript,
+                    project: 'system-service',
+                    url: 'https://github.com/leocwlam/system-service',
+                    description: 'Provide the basic service framework to help initial service implementation. It can be easy to inject any message framework and has built-in logging mechanism.'
+                  }) }
                 </div>
               </section>
               <section id="typeScript-area">
                 <div>
-                  <section id="TS-startup-template">
-                    <Media>
-                      <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={typescriptIcon}
-                        alt="TS-startup-template"
-                      />
-                      <Media.Body>
-                        <h4>TS-startup-template</h4>
-                        <h5>
-                          <a
-                            href="https://github.com/leocwlam/TS-startup-template"
-                            target="_blank" rel="noopener noreferrer"
-                          >
-                            https://github.com/leocwlam/TS-startup-template
-                          </a>
-                        </h5>
-                        <p>
-                          Provide the basic TypeScript startup framework to help
-                          initial any project implementation. It can be easy to
-                          inject any logging mechanism and integrate it with any
-                          service framework.
-                        </p>
-                      </Media.Body>
-                    </Media>
-                  </section>
+                  { projectSection({
+                    type: ProjectType.TypeScript,
+                    project: 'TS-startup-template',
+                    url: 'https://github.com/leocwlam/TS-startup-template',
+                    description: 'Provide the basic TypeScript startup framework to help initial any project implementation. It can be easy to inject any logging mechanism and integrate it with any service framework.'
+                  }) }
                 </div>
               </section>
             </div>
@@ -217,7 +179,7 @@ function ProjectPage() {
         </Container>
       </Jumbo>
     </Styles>
-  );
+  )
 }
 
-export default ProjectPage;
+export default ProjectPage

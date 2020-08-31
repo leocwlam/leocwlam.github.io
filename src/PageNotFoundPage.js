@@ -1,10 +1,10 @@
-import React from "react";
+import React from "react"
 
-import { Jumbotron as Jumbo, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-import notFoundImage from "./assets/backgrounds/not-found.jpg";
+import notFoundImage from './assets/backgrounds/not-found.jpg'
 
 const Styles = styled.div`
   .jumboContentBase {
@@ -13,7 +13,7 @@ const Styles = styled.div`
     min-height: 740px; 
     z-index: 100;
   }
-`;
+`
 
 function PageNotFoundPage() {
   return (
@@ -29,7 +29,7 @@ function PageNotFoundPage() {
         </Container>
       </Jumbo>
     </Styles>
-  );
+  )
 }
 
-export default PageNotFoundPage;
+export default PageNotFoundPage

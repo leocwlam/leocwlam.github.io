@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import './App.scss';
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import Header from "./components/Header";
-import ProfilePage from "./ProfilePage";
-import ProjectPage from "./ProjectPage";
-import ChatRoomPage from "./ChatRoomPage";
-import ContactPage from "./ContactPage";
-import PageNotFoundPage from "./PageNotFoundPage";
+import Header from './components/Header'
+import ProfilePage from './ProfilePage'
+import ProjectPage from './ProjectPage'
+import ChatRoomPage from './ChatRoomPage'
+import ContactPage from './ContactPage'
+import PageNotFoundPage from './PageNotFoundPage'
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import plenioLightImage from "./assets/backgrounds/plenio-light.jpg";
+import plenioLightImage from './assets/backgrounds/plenio-light.jpg'
 
 const Styles = styled.div`
   .jumbo {
@@ -28,7 +28,7 @@ const Styles = styled.div`
     max-height: 760px;
     min-height: 760px;
   }
-`;
+`
 
 function App() {
   return (
@@ -49,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

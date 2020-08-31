@@ -1,19 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Carousel, Card, Image /*, Badge, Button */ } from 'react-bootstrap';
+import React from 'react'
+import styled from 'styled-components'
+import { Carousel, Card, Image /*, Badge, Button */ } from 'react-bootstrap'
 
-import Company from './Company';
+import Company from './Company'
 
-import coffeeTimeMoive from '../assets/moives/coffeeTime.mp4';
-import contactImage from '../assets/pictures/contact-image.jpg';
+import coffeeTimeMoive from '../assets/moives/coffeeTime.mp4'
+import contactImage from '../assets/pictures/contact-image.jpg'
 
-import emailIcon from '../assets/icons/email.png';
-import linkedInIcon from '../assets/icons/linkedIn.png';
-import githubIcon from '../assets/icons/github.png';
+import emailIcon from '../assets/icons/email.png'
+import linkedInIcon from '../assets/icons/linkedIn.png'
+import githubIcon from '../assets/icons/github.png'
 
-const EMAILADDRESS = 'leocwlam@gmail.com';
-const LINKEDINURL = 'https://www.linkedin.com/in/leocwlam/';
-const GITHUBURL = 'https://github.com/leocwlam/';
+const EMAILADDRESS = 'leocwlam@gmail.com'
+const LINKEDINURL = 'https://www.linkedin.com/in/leocwlam/'
+const GITHUBURL = 'https://github.com/leocwlam/'
+
+const SHARINGTHOUGHTS = [
+  'Having fun',
+  'Keep your mind open',
+  'Get out of your comfort zone',
+  'See for yourself',
+  'If you know you can do better.. then do better',
+  'Your best teacher is your last mistake',
+  'Dream on Deamer',
+  'Trust your intuition. You don\'t need to explain or justify your feeling to anyone, just trust your own inner guidance, it knows best.'
+  ]
 
 const Styles = styled.div`
   .carousel {
@@ -31,10 +42,9 @@ const Styles = styled.div`
   .cardImageIcon {
     width: 2rem;
   }
-`;
+`
 
 function Profile(props) {
-
   const renderProfilePresent = () => {
     if (props.isContact) {
       return (
@@ -46,26 +56,20 @@ function Profile(props) {
           <source src={coffeeTimeMoive} type="video/mp4" />
             Your browser does not support the video tag.
         </video>
-      );
+      )
     } 
-  };
+  }
 
-  const homePageContent= () => {
+  const homePageContent = () => {
     return (
       <Card.Text>
-        <li>Having fun</li>
-        <li>Keep your mind open</li>
-        <li>Get out of your comfort zone</li>
-        <li>See for yourself</li>
-        <li>If you know you can do better.. then do better</li>
-        <li>Your best teacher is your last mistake</li>
-        <li>Dream on Deamer</li>
-        <li>
-          Trust your intuition. You don't need to explain or justify your
-          feeling to anyone, just trust your own inner guidance, it knows best.
-        </li>
+        {
+          SHARINGTHOUGHTS.map((value, index) => {
+            return <li key={index}>{value}</li>
+          })
+        }
       </Card.Text>
-    );
+    )
   }
 
   const renderContent = () => {
@@ -87,7 +91,7 @@ function Profile(props) {
     } else {
       return homePageContent();
     }
-  };
+  }
 
   return (
     <Styles>
@@ -112,11 +116,11 @@ function Profile(props) {
         })()}
       </Carousel>
     </Styles>
-  );
+  )
 }
 
 Profile.defaultProps = {
   isContact: false
 }
 
-export default Profile;
+export default Profile
