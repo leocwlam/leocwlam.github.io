@@ -111,7 +111,7 @@ function Profile(props) {
   return (
     <Styles>
       <Carousel className="carousel">
-        <Carousel.Item className={(props.isContact)? "carouselContactItem" : "carouselProfileItem"}>
+        <Carousel.Item className={(props.isContact) ? "carouselContactItem" : "carouselProfileItem"}>
           <Card border="light" className="carouselCard">
             <Card.Header>Leo Lam</Card.Header>
             <Card.Body style={{ width: '45rem' }}>
@@ -120,15 +120,11 @@ function Profile(props) {
             </Card.Body>
           </Card>
         </Carousel.Item>
-        {(() => {
-          if (!props.isContact) {
-            return (
-              <Carousel.Item className="carouselProfileItem">
-                <Company />
-              </Carousel.Item>
-            );
-          }
-        })()}
+        {(!props.isContact) ? 
+          <Carousel.Item className="carouselProfileItem">
+            <Company />
+          </Carousel.Item>
+          : ""}
       </Carousel>
     </Styles>
   )

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss';
 
@@ -18,7 +19,11 @@ import plenioLightImage from './assets/backgrounds/plenio-light.jpg'
 const Styles = styled.div`
   .jumbo {
     background: url(${plenioLightImage}) no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+    background-repeat: no-repeat;
     position: relative;
     margin-right: 0;
     margin-bottom: 0;

@@ -1,4 +1,5 @@
 import React from "react"
+import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -9,6 +10,11 @@ import notFoundImage from './assets/backgrounds/not-found.jpg'
 const Styles = styled.div`
   .jumboContentBase {
     background: url(${notFoundImage}) no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #f7f14f;
     z-index: 100;
   }
@@ -17,7 +23,7 @@ const Styles = styled.div`
 function PageNotFoundPage() {
   return (
     <Styles>
-      <Jumbo fluid className="jumboContentBase">
+      <Jumbo fluid className="jumboContentBase" style={(isMobile) ? {width: '200%'} : {}}>
         <Container>
           <h2>Page Not Found</h2>
           <p>

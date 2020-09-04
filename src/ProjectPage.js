@@ -1,4 +1,5 @@
 import React from 'react'
+import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container, Media } from 'react-bootstrap'
 import Scrollspy from 'react-scrollspy'
@@ -16,6 +17,11 @@ const ProjectType = {
 const Styles = styled.div`
   .jumboContentBase {
     background: url(${projectBackgroundImage}) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .projects {
     background-color: white;
@@ -92,7 +98,7 @@ function ProjectPage() {
   }
   return (
     <Styles>
-      <Jumbo fluid className="jumboContentBase">
+      <Jumbo fluid className="jumboContentBase" style={(isMobile) ? {width: '200%'} : {}}>
         <Container className="projects">
           <table>
             <tbody>

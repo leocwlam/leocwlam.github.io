@@ -1,4 +1,6 @@
 import React from 'react'
+import {isMobile} from 'react-device-detect';
+
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -7,7 +9,6 @@ import styled from 'styled-components'
 const Styles = styled.div`
   .jumbo {
     color: #f7f14f;
-    width: 100%;
     position: relative;
     z-index: 100;
   }
@@ -28,7 +29,7 @@ function Header(){
   const activeStyle =  { color: "orange" }
   return (
     <Styles>
-      <Jumbo fluid className="jumbo">
+      <Jumbo fluid className="jumbo" style={(isMobile) ? {width: '195%'} : {width: '100%'}}>
         <div className="overlay"></div>  {/* Use redeem header color */} 
         <Container>
           <nav>
