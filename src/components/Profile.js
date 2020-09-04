@@ -6,6 +6,9 @@ import Company from './Company'
 
 import coffeeTimeMoive from '../assets/moives/coffeeTime.mp4'
 import contactImage from '../assets/pictures/contact-image.jpg'
+import contactImage2 from '../assets/pictures/contact-image2.jpg'
+import contactImage3 from '../assets/pictures/contact-image3.png'
+import contactImage4 from '../assets/pictures/contact-image4.jpg'
 
 import emailIcon from '../assets/icons/email.png'
 import linkedInIcon from '../assets/icons/linkedIn.png'
@@ -14,6 +17,13 @@ import githubIcon from '../assets/icons/github.png'
 const EMAILADDRESS = 'leocwlam@gmail.com'
 const LINKEDINURL = 'https://www.linkedin.com/in/leocwlam/'
 const GITHUBURL = 'https://github.com/leocwlam/'
+
+const CONTACTIMAGES = [
+  contactImage,
+  contactImage2,
+  contactImage3,
+  contactImage4
+]
 
 const SHARINGTHOUGHTS = [
   'Having fun',
@@ -47,8 +57,9 @@ const Styles = styled.div`
 function Profile(props) {
   const renderProfilePresent = () => {
     if (props.isContact) {
+      const contactImageId = Math.floor(Math.random() * CONTACTIMAGES.length)
       return (
-        <Image src={contactImage} className="cardImage" />
+        <Image src={CONTACTIMAGES[contactImageId]} className="cardImage" />
       );
     } else {
       return (
