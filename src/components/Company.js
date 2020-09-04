@@ -8,7 +8,7 @@ const ELOQUAURL = 'https://www.oracle.com/marketingcloud/products/marketing-auto
 
 const Styles = styled.div`
   .card {
-    width: 53rem;
+    width: 47rem;
   }
 `
 

@@ -40,11 +40,15 @@ const Styles = styled.div`
   .carousel {
     opacity: 0.9;
   }
-  .carouselItem {
-    left: 8rem;
+  .carouselProfileItem {
+    left: 2rem;
+  }
+  .carouselContactItem {
+    left: 0rem;
   }
   .carouselCard {
-    width: 53rem;
+    width: 47rem;
+    margin: auto;
   }
   .cardImage {
     width: 20rem;
@@ -107,7 +111,7 @@ function Profile(props) {
   return (
     <Styles>
       <Carousel className="carousel">
-        <Carousel.Item className="carouselItem">
+        <Carousel.Item className={(props.isContact)? "carouselContactItem" : "carouselProfileItem"}>
           <Card border="light" className="carouselCard">
             <Card.Header>Leo Lam</Card.Header>
             <Card.Body style={{ width: '45rem' }}>
@@ -119,7 +123,7 @@ function Profile(props) {
         {(() => {
           if (!props.isContact) {
             return (
-              <Carousel.Item className="carouselItem">
+              <Carousel.Item className="carouselProfileItem">
                 <Company />
               </Carousel.Item>
             );

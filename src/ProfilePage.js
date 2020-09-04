@@ -10,7 +10,7 @@ import News from './components/News'
 
 const Styles = styled.div`
   .jumboContentBase {
-    background: url(${profileBackgroundImage}) no-repeat fixed;
+    background: url(${profileBackgroundImage}) no-repeat;
   }
 
   .container {
@@ -26,10 +26,10 @@ function ProfilePage() {
           <table>
             <tbody>
               <tr>
-                <td className="align-top align-right">
+                <td className="align-top">
                   <Profile />
                 </td>
-                <td className="align-top align-right">
+                <td className="align-top">
                   <News />
                 </td>
               </tr>

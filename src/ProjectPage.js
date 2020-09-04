@@ -15,7 +15,7 @@ const ProjectType = {
 
 const Styles = styled.div`
   .jumboContentBase {
-    background: url(${projectBackgroundImage}) no-repeat fixed;
+    background: url(${projectBackgroundImage}) no-repeat;
   }
   .projects {
     background-color: white;

@@ -50,6 +50,7 @@ const Styles = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 650px;
+  margin-left: 1rem;
 
   .title {
     font-size: larger;
@@ -110,7 +111,7 @@ function News() {
                   style={{ width: 320 }}
                   onChange={handleCountryChange}
                   value={country}
-                >
+                  >
                   {optionItems}
                 </select>
               </td>
