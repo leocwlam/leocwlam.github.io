@@ -3,14 +3,18 @@ import React from 'react'
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import styled from 'styled-components'
 
-import profileLeoImage from './assets/backgrounds/profile-leo.jpg'
+import profileBackgroundImage from './assets/backgrounds/profile.jpg'
 
 import Profile from './components/Profile'
 import News from './components/News'
 
 const Styles = styled.div`
   .jumboContentBase {
-    background: url(${profileLeoImage}) no-repeat;
+    background: url(${profileBackgroundImage}) no-repeat fixed;
+  }
+
+  .container {
+    margin: 0px !important;
   }
 `
 
@@ -18,7 +22,7 @@ function ProfilePage() {
   return (
     <Styles>
       <Jumbo fluid className="jumboContentBase">
-        <Container>
+        <Container className="container">
           <table>
             <tbody>
               <tr>

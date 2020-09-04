@@ -38,7 +38,7 @@ const SHARINGTHOUGHTS = [
 
 const Styles = styled.div`
   .carousel {
-    opacity: 0.95;
+    opacity: 0.9;
   }
   .carouselItem {
     left: 8rem;

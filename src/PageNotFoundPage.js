@@ -10,7 +10,6 @@ const Styles = styled.div`
   .jumboContentBase {
     background: url(${notFoundImage}) no-repeat fixed center;
     color: #f7f14f;
-    min-height: 740px; 
     z-index: 100;
   }
 `

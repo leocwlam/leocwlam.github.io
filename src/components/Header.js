@@ -7,19 +7,18 @@ import styled from 'styled-components'
 const Styles = styled.div`
   .jumbo {
     color: #f7f14f;
-    height: 130px;
     width: 100%;
     position: relative;
     z-index: 100;
   }
-
+  
   .overlay {
     background-color: #000;
     opacity: 0.3;
     position: absolute;
     top: 0;
-    left: -15px;
-    right: -15px;
+    left: 0px;
+    right: 0px;
     bottom: 0;
     z-index: -1;
   }
@@ -30,7 +29,7 @@ function Header(){
   return (
     <Styles>
       <Jumbo fluid className="jumbo">
-        <div className="overlay"></div>
+        <div className="overlay"></div>  {/* Use redeem header color */} 
         <Container>
           <nav>
             <NavLink activeStyle={activeStyle} exact to="/">Home</NavLink>

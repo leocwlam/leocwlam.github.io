@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import './App.scss';
+import './App.scss';
 
 import styled from 'styled-components'
 
@@ -20,13 +20,16 @@ const Styles = styled.div`
     background: url(${plenioLightImage}) no-repeat fixed;
     background-size: cover;
     position: relative;
+    margin-right: 0;
+    margin-bottom: 0;
   }
 
   .jumboContentBase {
     background-size: cover;
     position: relative;
-    max-height: 760px;
-    min-height: 760px;
+    margin-right: 0;
+    margin-bottom: 0;
+    min-height: 48rem;
   }
 `
 
@@ -34,8 +37,10 @@ function App() {
   return (
     <Styles>
       <BrowserRouter>
-        <div className="container-fluid jumbo">
+        <div>    
           <Header />
+        </div>
+        <div className="container-fluid jumbo md-0">
           <Switch>
             <Route path="/" exact component={ProfilePage} />
             <Route path="/open-source" component={ProjectPage} />

@@ -4,7 +4,7 @@ import { Jumbotron as Jumbo, Container, Media } from 'react-bootstrap'
 import Scrollspy from 'react-scrollspy'
 import styled from 'styled-components'
 
-import openSourceHouseImage from './assets/backgrounds/open-source-house.jpg'
+import projectBackgroundImage from './assets/backgrounds/project.jpg'
 import javascriptIcon from './assets/icons/javascript.png'
 import typescriptIcon from './assets/icons/typescript.png'
 
@@ -15,7 +15,7 @@ const ProjectType = {
 
 const Styles = styled.div`
   .jumboContentBase {
-    background: url(${openSourceHouseImage}) no-repeat fixed center;
+    background: url(${projectBackgroundImage}) no-repeat fixed;
   }
   .projects {
     background-color: white;
