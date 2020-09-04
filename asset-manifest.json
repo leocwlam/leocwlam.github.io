@@ -1,31 +1,38 @@
 {
   "files": {
-    "main.js": "/static/js/main.a99fadb2.chunk.js",
-    "main.js.map": "/static/js/main.a99fadb2.chunk.js.map",
+    "main.css": "/static/css/main.55f37b80.chunk.css",
+    "main.js": "/static/js/main.92de3148.chunk.js",
+    "main.js.map": "/static/js/main.92de3148.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ce7ed91f.js",
     "runtime-main.js.map": "/static/js/runtime-main.ce7ed91f.js.map",
     "static/css/2.11829350.chunk.css": "/static/css/2.11829350.chunk.css",
-    "static/js/2.5c235600.chunk.js": "/static/js/2.5c235600.chunk.js",
-    "static/js/2.5c235600.chunk.js.map": "/static/js/2.5c235600.chunk.js.map",
+    "static/js/2.f0f10fca.chunk.js": "/static/js/2.f0f10fca.chunk.js",
+    "static/js/2.f0f10fca.chunk.js.map": "/static/js/2.f0f10fca.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.2327efe515d3d9d0dc540ae10320fc65.js": "/precache-manifest.2327efe515d3d9d0dc540ae10320fc65.js",
+    "precache-manifest.a4b35e1ae020b78cbdc185105824a4f6.js": "/precache-manifest.a4b35e1ae020b78cbdc185105824a4f6.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.11829350.chunk.css.map": "/static/css/2.11829350.chunk.css.map",
-    "static/js/2.5c235600.chunk.js.LICENSE.txt": "/static/js/2.5c235600.chunk.js.LICENSE.txt",
+    "static/css/main.55f37b80.chunk.css.map": "/static/css/main.55f37b80.chunk.css.map",
+    "static/js/2.f0f10fca.chunk.js.LICENSE.txt": "/static/js/2.f0f10fca.chunk.js.LICENSE.txt",
     "static/media/chat-room-gate.jpg": "/static/media/chat-room-gate.0765ef43.jpg",
     "static/media/coffeeTime.mp4": "/static/media/coffeeTime.65567a04.mp4",
     "static/media/contact-image.jpg": "/static/media/contact-image.f8ef500c.jpg",
+    "static/media/contact-image2.jpg": "/static/media/contact-image2.1205a495.jpg",
+    "static/media/contact-image3.png": "/static/media/contact-image3.854882a1.png",
+    "static/media/contact-image4.jpg": "/static/media/contact-image4.aa4d2eb5.jpg",
     "static/media/github.png": "/static/media/github.fbeb1605.png",
     "static/media/javascript.png": "/static/media/javascript.84542742.png",
     "static/media/not-found.jpg": "/static/media/not-found.67ecec6e.jpg",
-    "static/media/open-source-house.jpg": "/static/media/open-source-house.f3377053.jpg",
     "static/media/plenio-light.jpg": "/static/media/plenio-light.e7c202b2.jpg",
-    "static/media/profile-leo.jpg": "/static/media/profile-leo.0bd89efb.jpg"
+    "static/media/profile-leo.jpg": "/static/media/profile-leo.0bd89efb.jpg",
+    "static/media/profile.jpg": "/static/media/profile.a88dcf0c.jpg",
+    "static/media/project.jpg": "/static/media/project.14227ead.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ce7ed91f.js",
     "static/css/2.11829350.chunk.css",
-    "static/js/2.5c235600.chunk.js",
-    "static/js/main.a99fadb2.chunk.js"
+    "static/js/2.f0f10fca.chunk.js",
+    "static/css/main.55f37b80.chunk.css",
+    "static/js/main.92de3148.chunk.js"
   ]
 }
