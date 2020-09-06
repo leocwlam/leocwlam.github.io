@@ -1,5 +1,4 @@
 import React from 'react'
-import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import styled from 'styled-components'
@@ -21,6 +20,7 @@ const Styles = styled.div`
   }
 
   .container {
+    display:  flex;
     margin: 0px;
   }
 `
@@ -28,20 +28,14 @@ const Styles = styled.div`
 function ProfilePage() {
   return (
     <Styles>
-      <Jumbo fluid className="jumboContentBase" style={(isMobile) ? {width: '200%'} : {}}>
+      <Jumbo fluid className="jumboContentBase">
         <Container className="container">
-          <table>
-            <tbody>
-              <tr>
-                <td className="align-top">
-                  <Profile />
-                </td>
-                <td className="align-top">
-                  <News />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div>
+            <Profile />
+          </div>
+          <div>
+            <News />
+          </div>
         </Container>
       </Jumbo>
     </Styles>

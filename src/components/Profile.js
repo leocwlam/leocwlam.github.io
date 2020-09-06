@@ -67,7 +67,7 @@ function Profile(props) {
       );
     } else {
       return (
-        <video width="320" height="240" autoPlay loop>
+        <video width="320" autoPlay loop>
           <source src={coffeeTimeMoive} type="video/mp4" />
             Your browser does not support the video tag.
         </video>

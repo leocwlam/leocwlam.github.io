@@ -1,5 +1,4 @@
 import React from "react"
-import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -23,7 +22,7 @@ const Styles = styled.div`
 function PageNotFoundPage() {
   return (
     <Styles>
-      <Jumbo fluid className="jumboContentBase" style={(isMobile) ? {width: '200%'} : {}}>
+      <Jumbo fluid className="jumboContentBase">
         <Container>
           <h2>Page Not Found</h2>
           <p>

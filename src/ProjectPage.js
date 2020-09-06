@@ -1,5 +1,4 @@
 import React from 'react'
-import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container, Media } from 'react-bootstrap'
 import Scrollspy from 'react-scrollspy'
@@ -24,11 +23,13 @@ const Styles = styled.div`
     background-repeat: no-repeat;
   }
   .projects {
+    display: flex;
+    // justifyContent: 'center';
+    // alignItems: 'center';
     background-color: white;
     opacity: 0.9;
     font-family: sans-serif;
-    max-Height: 650px;
-    overflow-y: auto;
+    // overflow-y: auto;
   }
   .scrollspy {
     background-color: #262323;
@@ -98,103 +99,110 @@ function ProjectPage() {
   }
   return (
     <Styles>
-      <Jumbo fluid className="jumboContentBase" style={(isMobile) ? {width: '200%'} : {}}>
+      <Jumbo
+        fluid
+        className="jumboContentBase"
+      >
         <Container className="projects">
-          <table>
-            <tbody>
-              <tr>
-                <td className="align-top align-right">
-                  <div>
-                    <section id="javaScript-area">
-                      <div>
-                        { projectSection({
-                          type: ProjectType.JavaScript,
-                          project: 'system-logger',
-                          url: 'https://github.com/leocwlam/system-logger',
-                          description: 'Provide the basic logging mechanism. It can be easy to inject the storage logic for those logging result.'
-                        }) }
-                        
-                        { projectSection({
-                          type: ProjectType.JavaScript,
-                          project: 'system-task',
-                          url: 'https://github.com/leocwlam/system-task',
-                          description: 'Provide the basic task framework to help initial task implementation. It can be easy to inject any logging mechanism and integrate with any service framework.'
-                        }) }
+          <div>
+            <section id="javaScript-area">
+              <div>
+                {projectSection({
+                  type: ProjectType.JavaScript,
+                  project: "system-logger",
+                  url: "https://github.com/leocwlam/system-logger",
+                  description:
+                    "Provide the basic logging mechanism. It can be easy to inject the storage logic for those logging result.",
+                })}
 
-                        { projectSection({
-                          type: ProjectType.JavaScript,
-                          project: 'system-service',
-                          url: 'https://github.com/leocwlam/system-service',
-                          description: 'Provide the basic service framework to help initial service implementation. It can be easy to inject any message framework and has built-in logging mechanism.'
-                        }) }
-                      </div>
-                    </section>
-                    <section id="typeScript-area">
-                      <div>
-                        { projectSection({
-                          type: ProjectType.TypeScript,
-                          project: 'TS-startup-template',
-                          url: 'https://github.com/leocwlam/TS-startup-template',
-                          description: 'Provide the basic TypeScript startup framework to help initial any project implementation. It can be easy to inject any logging mechanism and integrate it with any service framework.'
-                        }) }
-                      </div>
-                    </section>
-                  </div>
-                </td>
-                <td className="align-center align-right" style={{backgroundColor: "#515151"}}>
-                  <Scrollspy
-                    className="scrollspy"
-                    items={[
-                      "javaScript-area",
-                      "typeScript-area",
-                      "system-logger",
-                      "system-task",
-                      "system-service",
-                      "TS-startup-template",
-                    ]}
-                    currentClassName="isCurrent"
+                {projectSection({
+                  type: ProjectType.JavaScript,
+                  project: "system-task",
+                  url: "https://github.com/leocwlam/system-task",
+                  description:
+                    "Provide the basic task framework to help initial task implementation. It can be easy to inject any logging mechanism and integrate with any service framework.",
+                })}
+
+                {projectSection({
+                  type: ProjectType.JavaScript,
+                  project: "system-service",
+                  url: "https://github.com/leocwlam/system-service",
+                  description:
+                    "Provide the basic service framework to help initial service implementation. It can be easy to inject any message framework and has built-in logging mechanism.",
+                })}
+              </div>
+            </section>
+            <section id="typeScript-area">
+              <div>
+                {projectSection({
+                  type: ProjectType.TypeScript,
+                  project: "TS-startup-template",
+                  url: "https://github.com/leocwlam/TS-startup-template",
+                  description:
+                    "Provide the basic TypeScript startup framework to help initial any project implementation. It can be easy to inject any logging mechanism and integrate it with any service framework.",
+                })}
+              </div>
+            </section>
+          </div>
+          <div style={{ backgroundColor: "#515151", height: 650, margin: 0 }}>
+            <Scrollspy
+              className="scrollspy"
+              items={[
+                "javaScript-area",
+                "typeScript-area",
+                "system-logger",
+                "system-task",
+                "system-service",
+                "TS-startup-template",
+              ]}
+              currentClassName="isCurrent"
+            >
+              <ul className="nav">
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    style={{ margin: -15 }}
+                    href="#javaScript-area"
                   >
-                    <ul className="nav">
-                      <li className="nav-item">
-                        <a className="nav-link" style={{margin: -15}} href="#javaScript-area">
-                          JavaScript
-                        </a>
-                      </li>
-                      <div>
-                        <li className="nav-item">
-                          <a href="#system-logger" className="nav-link">
-                            system-logger
-                          </a>
-                          <a href="#system-task" className="nav-link">
-                            system-task
-                          </a>
-                          <a href="#system-service" className="nav-link">
-                            system-service
-                          </a>
-                        </li>
-                      </div>
-                      <li className="nav-item">
-                        <a className="nav-link" style={{margin: -15}} href="#typeScript-area">
-                          TypeScript
-                        </a>
-                      </li>
-                      <div>
-                        <li className="nav-item">
-                          <a href="#TS-startup-template" className="nav-link">
-                            TS-startup-template
-                          </a>
-                        </li>
-                      </div>
-                    </ul>
-                  </Scrollspy>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    JavaScript
+                  </a>
+                </li>
+                <div>
+                  <li className="nav-item">
+                    <a href="#system-logger" className="nav-link">
+                      system-logger
+                    </a>
+                    <a href="#system-task" className="nav-link">
+                      system-task
+                    </a>
+                    <a href="#system-service" className="nav-link">
+                      system-service
+                    </a>
+                  </li>
+                </div>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    style={{ margin: -15 }}
+                    href="#typeScript-area"
+                  >
+                    TypeScript
+                  </a>
+                </li>
+                <div>
+                  <li className="nav-item">
+                    <a href="#TS-startup-template" className="nav-link">
+                      TS-startup-template
+                    </a>
+                  </li>
+                </div>
+              </ul>
+            </Scrollspy>
+          </div>
         </Container>
       </Jumbo>
     </Styles>
-  )
+  );
 }
 
 export default ProjectPage

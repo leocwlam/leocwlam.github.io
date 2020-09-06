@@ -1,5 +1,4 @@
 import React from 'react'
-import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
@@ -23,13 +22,25 @@ const Styles = styled.div`
     bottom: 0;
     z-index: -1;
   }
+
+  @media screen and (max-width: 1200px) {
+    .jumbo {
+      width: 167%
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .jumbo {
+      width: 326%
+    }
+  }
 `
 
 function Header(){
   const activeStyle =  { color: "orange" }
   return (
     <Styles>
-      <Jumbo fluid className="jumbo" style={(isMobile) ? {width: '195%'} : {width: '100%'}}>
+      <Jumbo fluid className="jumbo">
         <div className="overlay"></div>  {/* Use redeem header color */} 
         <Container>
           <nav>

@@ -1,5 +1,4 @@
 import React from 'react'
-import {isMobile} from 'react-device-detect';
 
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import styled from 'styled-components'
@@ -20,7 +19,7 @@ const Styles = styled.div`
 function ChatRoomPage() {
   return (
     <Styles>
-      <Jumbo fluid className="jumboContentBase" style={(isMobile) ? {width: '200%'} : {}}>
+      <Jumbo fluid className="jumboContentBase">
         <Container>
           <p>Under Construction</p>
         </Container>

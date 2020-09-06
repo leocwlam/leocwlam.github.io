@@ -36,6 +36,18 @@ const Styles = styled.div`
     margin-bottom: 0;
     min-height: 48rem;
   }
+  
+  @media screen and (max-width: 1200px) {
+    .jumboContentBase {
+      width: 170%
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .jumboContentBase {
+      width: 345%
+    }
+  }
 `
 
 function App() {
