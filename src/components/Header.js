@@ -23,13 +23,13 @@ const Styles = styled.div`
     z-index: -1;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media (max-width: 1200px) {
     .jumbo {
-      width: 167%
+      width: 186%
     }
   }
   
-  @media screen and (max-width: 600px) {
+  @media (max-width: 600px) {
     .jumbo {
       width: 326%
     }

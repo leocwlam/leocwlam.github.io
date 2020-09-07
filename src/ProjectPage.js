@@ -35,6 +35,7 @@ const Styles = styled.div`
     background-color: #262323;
     opacity: 1;
     margin: 0px;
+    margin-top: 130px;
     width: 250px;
     // top: 100px;
     // right: 80px;
@@ -144,7 +145,7 @@ function ProjectPage() {
               </div>
             </section>
           </div>
-          <div style={{ backgroundColor: "#515151", height: 650, margin: 0 }}>
+          <div style={{ backgroundColor: "#515151", margin: 0 }}>
             <Scrollspy
               className="scrollspy"
               items={[

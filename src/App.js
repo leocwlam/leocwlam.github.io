@@ -24,9 +24,10 @@ const Styles = styled.div`
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
-    margin-right: 0;
+    // position: relative;
+    // margin-right: 0;
     margin-bottom: 0;
+    // border-bottom-style: hidden;
   }
 
   .jumboContentBase {
@@ -34,18 +35,21 @@ const Styles = styled.div`
     position: relative;
     margin-right: 0;
     margin-bottom: 0;
-    min-height: 48rem;
+    min-height: 40rem;
+    // top: 1rem;
   }
-  
-  @media screen and (max-width: 1200px) {
+
+  @media (max-width: 1200px) {
     .jumboContentBase {
-      width: 170%
+      width: 190%;
+      height: 56rem;
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media (max-width: 600px) {
     .jumboContentBase {
-      width: 345%
+      width: 345%;
+      height: 48rem;
     }
   }
 `
@@ -57,7 +61,7 @@ function App() {
         <div>    
           <Header />
         </div>
-        <div className="container-fluid jumbo md-0">
+        <div className="container-fluid jumbo md-0" style= {{ 'min-height': '47rem'}}>
           <Switch>
             <Route path="/" exact component={ProfilePage} />
             <Route path="/open-source" component={ProjectPage} />
