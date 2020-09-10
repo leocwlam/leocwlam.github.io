@@ -5,7 +5,10 @@ import styled from 'styled-components'
 
 import profileBackgroundImage from './assets/backgrounds/profile.jpg'
 
+import WeatherProvider from './Hooks/WeatherContext'
+
 import Profile from './components/Profile'
+import Weather from './components/Weather'
 import News from './components/News'
 
 const Styles = styled.div`
@@ -34,6 +37,9 @@ function ProfilePage() {
             <Profile />
           </div>
           <div>
+            <WeatherProvider>
+              <Weather />
+            </WeatherProvider>
             <News />
           </div>
         </Container>

@@ -102,9 +102,9 @@ function Profile(props) {
           <a href={GITHUBURL} target="_blank" rel="noopener noreferrer">{' '}GitHub</a>
           <br />
         </Card.Text>
-      );
+      )
     } else {
-      return homePageContent();
+      return homePageContent()
     }
   }
 

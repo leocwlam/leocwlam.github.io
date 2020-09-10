@@ -2013,6 +2013,11 @@ amdefine@>=0.0.4:
   resolved "https://artifactory.uptake.com:443/api/npm/npm/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://artifactory.uptake.com:443/api/npm/npm/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha1-YU7FqBEx1+TcNipYFD90BqvWgHU=
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
@@ -9104,6 +9109,13 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://artifactory.uptake.com:443/api/npm/npm/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
+
+react-notifications-component@^2.4.0:
+  version "2.4.0"
+  resolved "https://artifactory.uptake.com:443/api/npm/npm/react-notifications-component/-/react-notifications-component-2.4.0.tgz#21603c9cfa517a986b58e2c46e384d3cd299d325"
+  integrity sha1-IWA8nPpRephrWOLEbjhNPNKZ0yU=
+  dependencies:
+    prop-types "^15.6.2"
 
 react-overlays@^4.1.0:
   version "4.1.0"

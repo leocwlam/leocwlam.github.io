@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 import useLocalStorage from '../Hooks/UseLocalStorage'
@@ -42,7 +42,6 @@ const COUNTRYMAP = new Map([
   ['UK', 'gb']
 ])
 
-
 const Styles = styled.div`
   background-color: white;
   opacity: 1;
@@ -67,15 +66,15 @@ function News() {
     fetch(`${NEWSSERVICE}${coutryCode}`)
       .then((response) => response.json())
       .then((data) => {
-        setNews(data);
+        setNews(data)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   }
 
   function requestUpdateNews(coutryCode) {
-    setNews({ articles: [] }); // cleanup the old news
-    setLastTimeNewsGet(new Date());
-    requestNews(coutryCode);
+    setNews({ articles: [] })  // cleanup the old news
+    setLastTimeNewsGet(new Date())
+    requestNews(coutryCode)
   }
 
   const handleCountryChange = (event) => {
@@ -122,12 +121,12 @@ function News() {
       {(() => {
         if (news.articles) {
           return news.articles.map((article, index) => {
-            return <NewsArticle key={index} article={article} />;
+            return <NewsArticle key={index} article={article} />
           });
         }
       })()}
     </Styles>
-  );
+  )
 }
 
 export default News

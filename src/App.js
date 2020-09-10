@@ -3,6 +3,10 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss';
 
+import ReactNotification from 'react-notifications-component'
+import "animate.css"
+import 'react-notifications-component/dist/theme.css'
+
 import styled from 'styled-components'
 
 import Header from './components/Header'
@@ -57,11 +61,12 @@ const Styles = styled.div`
 function App() {
   return (
     <Styles>
+      <ReactNotification />
       <BrowserRouter>
         <div>    
           <Header />
         </div>
-        <div className="container-fluid jumbo md-0" style= {{ 'min-height': '47rem'}}>
+        <div className="container-fluid jumbo md-0" style= {{ 'minHeight': '47rem'}}>
           <Switch>
             <Route path="/" exact component={ProfilePage} />
             <Route path="/open-source" component={ProjectPage} />
