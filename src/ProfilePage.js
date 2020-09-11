@@ -24,7 +24,18 @@ const Styles = styled.div`
 
   .container {
     display:  flex;
-    margin: 0px;
+  }
+  
+  @media (max-width: 1200px) {
+    .container {
+      margin: 0px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      margin: 0px;
+    }
   }
 `
 
