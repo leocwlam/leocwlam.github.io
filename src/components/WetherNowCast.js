@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import styled from 'styled-components'
 
-import { ButtonGroup, Button, Image } from 'react-bootstrap'
+import { ButtonGroup, Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { useWeather } from '../Hooks/WeatherContext'
 
 import rain_heavy from '../assets/icons/wether/rain_heavy.svg'
@@ -122,6 +122,7 @@ function WeatherNowCast() {
   const [precipitationValue, setPrecipitationValue] = useState('0 mm/hr')
   const [humidty, setHumidty] = useState('0%')
   const [windSpeed, setWindSpeed] = useState('0 m/s')
+  const [observationTime, setObservationTime] = useState(new Date())
 
   function convertTemperature(value, isToFahrenheit) {
     return isToFahrenheit ? ((value * 1.8) + 32) : ((value - 32) * 0.5556)
@@ -137,8 +138,8 @@ function WeatherNowCast() {
     }
   }
 
-  function requestWeatherNowcast() {
-    fetch(`${WEATHERSERVICE}${DEFINEDWEATHERNOWCAST}/${weatherContext.latitude}/${weatherContext.longitude}`)
+  function requestWeatherNowcast({latitude, longitude}) {
+    fetch(`${WEATHERSERVICE}${DEFINEDWEATHERNOWCAST}/${latitude}/${longitude}`)
       .then((response) => response.json())
       .then((data) => {
         setWeatherCode(data.weather_code.value)
@@ -155,6 +156,7 @@ function WeatherNowCast() {
         setPrecipitationValue(`${data.precipitation.value} ${data.precipitation.units}`)
         setHumidty(`${data.humidity.value} ${data.humidity.units}`)
         setWindSpeed(`${data.wind_speed.value} ${data.wind_speed.units}`)
+        setObservationTime(new Date(data.observation_time.value))
       })
       .catch((err) => console.log(err))
   }
@@ -167,10 +169,18 @@ function WeatherNowCast() {
     setDisplayCelsius(!isToFahrenheit)
   }
 
+  function renderImageTooltip(props) {
+    return (
+    <Tooltip id="image-tooltip" {...props}>
+      {`Updated at ${observationTime.toLocaleString()}`}
+    </Tooltip>
+    )
+  }
+
   useEffect(() => {
     // console.log(weatherContext)
-    requestWeatherNowcast()
-  })
+    requestWeatherNowcast(weatherContext)
+  }, [weatherContext]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Styles>
@@ -178,19 +188,25 @@ function WeatherNowCast() {
         <div style= {{textAlign: 'center'}}>
           <div style={{width: '6rem'}}>
             <div style={{display: 'flex'}}>
-              <Image
-                width={'30rem'}
-                height={'30rem'}
-                src={weatherDescriptionImage(weatherCode).image}
-                alt={weatherCode}
-                style={{marginLeft: '1rem'}}
-                />
+              <OverlayTrigger placement='right' delay={{ show: 250, hide: 400 }}
+                    overlay={renderImageTooltip}>
+                <Image
+                  width={'30rem'}
+                  height={'30rem'}
+                  src={weatherDescriptionImage(weatherCode).image}
+                  alt={weatherCode}
+                  style={{marginLeft: '1rem'}}
+                  data-tip data-for="observationTimeToolTip"
+                  />
+                </OverlayTrigger >
                 <div style= {{textAlign: 'center', fontSize: 'xx-small', color:'#22222c', alignSelf: 'center'}}>
                   {weatherDescription}
                 </div>
             </div>
             <div>
-              {temperature.toFixed(2)}{convertTemperatureUnits(temperatureUnits)}
+              <div style={{color: '#98732dd1'}}>
+                {temperature.toFixed(2)}{convertTemperatureUnits(temperatureUnits)}
+              </div>
               <ButtonGroup size='sm' toggle={true}>
                 <Button active={displayCelsius} onClick={() => handleTemperatureConvert(false)}>{convertTemperatureUnits('C')}</Button>
                 <Button active={!displayCelsius} onClick={() => handleTemperatureConvert(true)}>{convertTemperatureUnits('F')}</Button>
