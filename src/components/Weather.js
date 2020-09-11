@@ -13,7 +13,7 @@ import WetherNowCast from './WetherNowCast'
 const DECIMALREGEX = /^-?\d*\.?\d*$/;
 
 const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
-const DEFINEDWEATHERCITIES = 'weather/countries'
+const DEFINEDWEATHERCITIES = 'weather/cities'
 const REFRESHWEATHERCITIES = 12
 
 const Styles = styled.div`
@@ -78,8 +78,8 @@ function Weather() {
       optionItems = 
         weatherCities.map((cityInformation) => {
             const {name, point} = cityInformation
-            const countryName = name.split('_').pop()
-            return (<option key={countryName} value={JSON.stringify(point)}>{countryName.replace(/([A-Z])/g, ' $1').trim()}</option>)
+            const cityName = name.split('_').pop()
+            return (<option key={cityName} value={JSON.stringify(point)}>{cityName.replace(/([A-Z])/g, ' $1').trim()}</option>)
           })
       }
     optionItems.sort(function (a, b) {
