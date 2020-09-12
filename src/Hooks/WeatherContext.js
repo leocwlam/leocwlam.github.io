@@ -7,7 +7,7 @@ export function useWeather() {
 }
 
 function WeatherProvider({children}) {
-  const [weather, setWeather] = useState({'latitude': 0, 'longitude': 0})
+  const [weather, setWeather] = useState({latitude: 0, longitude: 0, temperatureUnits: 'C'})
 
   return (
     <WeatherContext.Provider value={[weather, setWeather]}>

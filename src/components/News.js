@@ -48,7 +48,7 @@ const Styles = styled.div`
   width: 400px;
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: 38rem;
+  max-height: 28rem;
   margin-left: 1rem;
 
   .title {

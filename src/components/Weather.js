@@ -9,6 +9,7 @@ import useLocalStorage from '../Hooks/UseLocalStorage'
 import { useWeather } from '../Hooks/WeatherContext'
 
 import WetherNowCast from './WetherNowCast'
+import WeatherFutureCast from './WeatherFutureCast'
 
 const DECIMALREGEX = /^-?\d*\.?\d*$/;
 
@@ -72,6 +73,23 @@ function Weather() {
     })
   }
 
+  function showCanUseGeolocationMessage(width) {
+    store.addNotification ({
+      title: 'Information',
+      message: 'Click Geolocation button  Or  Enter latitude & longitude',
+      type: 'info',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: {
+        duration: 5000,
+        onScreen: true
+      },
+      width
+    })
+  }
+
   function buildCitiesList(weatherCities) {
     optionItems = []
     if (weatherCities && (weatherCities.length > 0)) {
@@ -116,6 +134,9 @@ function Weather() {
 
   const handleCityChange = (event) => {
     const {lat, lon} = JSON.parse(event.target.value)
+    if ((lat === 0) && (lon === 0)) {
+      showCanUseGeolocationMessage(230)
+    }
     setWeatherCity(event.target.value)
     setLatitude((+lat).toFixed(4))
     setLongitude((+lon).toFixed(4))
@@ -221,6 +242,7 @@ function Weather() {
               </div>
             </div>
             <WetherNowCast />
+            <WeatherFutureCast />
           </div>
         </h3>
     </Styles>
