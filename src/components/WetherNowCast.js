@@ -65,6 +65,10 @@ function WeatherNowCast() {
   }
 
   function handleTemperatureConvert(isToFahrenheit) {
+    if ((isToFahrenheit && temperatureUnits === convertTemperatureUnits('F')) ||
+      (!isToFahrenheit && temperatureUnits === convertTemperatureUnits('C')))
+      return
+
     const newUnits = isToFahrenheit ? 'F' : 'C'
     setTemperature(convertTemperature(temperature, isToFahrenheit))
     setTemperatureUnits(convertTemperatureUnits(newUnits))
