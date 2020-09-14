@@ -100,23 +100,19 @@ function News() {
   return (
     <Styles>
       <h3 className="title">
-        <table>
-          <tbody>
-            <tr>
-              <td>News</td>
-              <td>
-                <select
-                  className="form-control"
-                  style={{ width: 320 }}
-                  onChange={handleCountryChange}
-                  value={country}
-                  >
-                  {optionItems}
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div style={{display: 'flex', alignItems: 'center'}}>
+          <div>News</div>
+          <div style={{marginLeft: '0.5rem'}}>
+            <select
+              className="form-control"
+              style={{ width: 320 }}
+              onChange={handleCountryChange}
+              value={country}
+              >
+              {optionItems}
+            </select>
+          </div>
+        </div>
       </h3>
       {(() => {
         if (news.articles) {
