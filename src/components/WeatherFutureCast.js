@@ -34,10 +34,14 @@ function WeatherFutureCast() {
   const [futureThirdDay, setfutureThirdDay] = useState({day: 2, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
 
   function temperatureValue(temperature, temperatureUnits, requestDisplayTemperatureUnits) {
-    if (temperatureUnits.toLowerCase() === requestDisplayTemperatureUnits.toLowerCase())
+    if (convertTemperatureUnits(temperatureUnits) === requestDisplayTemperatureUnits)
       return temperature
-    const isToFahrenheit = (requestDisplayTemperatureUnits.toLowerCase() === 'f')
-    return convertTemperature(temperature, isToFahrenheit)
+
+    if (requestDisplayTemperatureUnits === convertTemperatureUnits('C')) {
+      return (temperatureUnits.toLowerCase() === 'c') ? temperature : convertTemperature(temperature, false)
+    }
+    
+    return (temperatureUnits.toLowerCase() === 'c') ? convertTemperature(temperature, true) : temperature
   }
 
   function requestWeatherFutureCast({latitude, longitude}) {

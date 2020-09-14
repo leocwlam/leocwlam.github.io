@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import { ButtonGroup, Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 import { weatherDescriptionImage, convertTemperatureUnits, convertTemperature } from '../lib/weatherHelper'
+
+import useLocalStorage from '../Hooks/UseLocalStorage'
 import { useWeather } from '../Hooks/WeatherContext'
 
 const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
@@ -25,13 +27,14 @@ const Styles = styled.div`
 
 function WeatherNowCast() {
   const [weatherContext, setWeatherContext] = useWeather()
+  const [ , setLocalTemperatureUnits] = useLocalStorage('temperatureUnits', '°C')
   const [weatherCode, setWeatherCode] = useState('clear')
   const [weatherDescription, setWeatherDescription] = useState(weatherDescriptionImage('clear').description)
   const [temperature, setTemperature] = useState(0)
-  const [temperatureUnits, setTemperatureUnits] = useState('°C')
+  const [temperatureUnits, setTemperatureUnits] = useState(weatherContext.temperatureUnits)
   const [feelsLikeTemperature, setFeelsLikeTemperature] = useState(0)
-  const [feelsLikeTemperatureUnits, setFeelsLikeTemperatureUnits] = useState('°C')
-  const [displayCelsius, setDisplayCelsius] = useState(true)
+  const [feelsLikeTemperatureUnits, setFeelsLikeTemperatureUnits] = useState(weatherContext.temperatureUnits)
+  const [displayCelsius, setDisplayCelsius] = useState(weatherContext.temperatureUnits === convertTemperatureUnits('C'))
   const [sunrise, setSunrise] = useState(new Date())
   const [sunset, setSunset] = useState(new Date())
   const [pressure, setPressure] = useState('0 hPa')
@@ -41,17 +44,34 @@ function WeatherNowCast() {
   const [windSpeed, setWindSpeed] = useState('0 m/s')
   const [observationTime, setObservationTime] = useState(new Date())
 
+  function setRenderTemperature(sourceTemperature, sourceTemperatureUnits) {
+    if (displayCelsius) {
+      setTemperatureUnits(convertTemperatureUnits('C'))
+      setTemperature((sourceTemperatureUnits.toLowerCase() === 'c') ? sourceTemperature : convertTemperature(sourceTemperature, true))
+    } else {
+      setTemperatureUnits(convertTemperatureUnits('F'))
+      setTemperature((sourceTemperatureUnits.toLowerCase() === 'c') ? convertTemperature(sourceTemperature, true) : sourceTemperature)
+    }
+  }
+
+  function setRenderFeelsLikeTemperature(sourceTemperature, sourceTemperatureUnits) {
+    if (displayCelsius) {
+      setFeelsLikeTemperatureUnits(convertTemperatureUnits('C'))
+      setFeelsLikeTemperature((sourceTemperatureUnits.toLowerCase() === 'c') ? sourceTemperature : convertTemperature(sourceTemperature, true))
+    } else {
+      setFeelsLikeTemperatureUnits(convertTemperatureUnits('F'))
+      setFeelsLikeTemperature((sourceTemperatureUnits.toLowerCase() === 'c') ? convertTemperature(sourceTemperature, true) : sourceTemperature)
+    }
+  }
+
   function requestWeatherNowcast({latitude, longitude}) {
     fetch(`${WEATHERSERVICE}${DEFINEDWEATHERNOWCAST}/${latitude}/${longitude}`)
       .then((response) => response.json())
       .then((data) => {
         setWeatherCode(data.weather_code.value)
         setWeatherDescription(weatherDescriptionImage(data.weather_code.value).description)
-        setTemperature(+data.temp.value)
-        setTemperatureUnits(convertTemperatureUnits(data.temp.units))
-        setDisplayCelsius((data.temp.units.toLowerCase() === 'c'))
-        setFeelsLikeTemperature(+data.feels_like.value)
-        setFeelsLikeTemperatureUnits(convertTemperatureUnits(data.feels_like.units))
+        setRenderTemperature(+data.temp.value, data.temp.units)
+        setRenderFeelsLikeTemperature(+data.feels_like.value, data.feels_like.units)
         setSunrise(new Date(data.sunrise.value))
         setSunset(new Date(data.sunset.value))
         setPressure(`${data.baro_pressure.value} ${data.baro_pressure.units}`)
@@ -75,7 +95,8 @@ function WeatherNowCast() {
     setFeelsLikeTemperature(convertTemperature(feelsLikeTemperature, isToFahrenheit))
     setFeelsLikeTemperatureUnits(convertTemperatureUnits(newUnits))
     setDisplayCelsius(!isToFahrenheit)
-    setWeatherContext({...weatherContext, temperatureUnits: newUnits})
+    setLocalTemperatureUnits(convertTemperatureUnits(newUnits))
+    setWeatherContext({...weatherContext, temperatureUnits: convertTemperatureUnits(newUnits)})
   }
 
   function renderImageTooltip(props) {
@@ -89,7 +110,7 @@ function WeatherNowCast() {
   useEffect(() => {
     // console.log(weatherContext)
     requestWeatherNowcast(weatherContext)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [weatherContext]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Styles>
