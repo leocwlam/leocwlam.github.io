@@ -100,7 +100,7 @@ function News() {
   return (
     <Styles>
       <h3 className="title">
-        <div style={{display: 'flex', alignItems: 'center'}}>
+        <div style={{display: 'flex', alignItems: 'center', marginLeft: '0.3rem'}}>
           <div>News</div>
           <div style={{marginLeft: '0.5rem'}}>
             <select

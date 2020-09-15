@@ -26,13 +26,7 @@ const Styles = styled.div`
     display:  flex;
   }
   
-  @media (max-width: 1200px) {
-    .container {
-      margin: 0px;
-    }
-  }
-
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     .container {
       margin: 0px;
     }
@@ -44,7 +38,7 @@ function ProfilePage() {
     <Styles>
       <Jumbo fluid className="jumboContentBase">
         <Container className="container">
-          <div>
+          <div style={{width: '780px' }}>
             <Profile />
           </div>
           <div>

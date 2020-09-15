@@ -208,12 +208,12 @@ function Weather() {
         <h3 className='title'>
           <div>
             <div style={{display: 'flex'}}>
-              <div style={{alignSelf: 'center'}}>Weather</div>
+              <div style={{alignSelf: 'center', marginLeft: '0.3rem'}}>Weather</div>
               <div className="weatherSelector">
                 <div>
                   <select
                     className='form-control'
-                    style={{ width: '10rem' }}
+                    style={{ width: '9.5rem' }}
                     onChange={handleCityChange}
                     value={weatherCity}
                     >
