@@ -231,7 +231,7 @@ function Weather() {
                     <div style={{ marginLeft: '.1rem'}} >
                       <label>
                         <input name='longitude' value={longitude} className='latlon' disabled={disabledLatitudeLongitude} onChange={handleLongitudeChange}/>
-                        °W
+                        °E
                       </label>
                     </div>
                   </div>
