@@ -192,9 +192,9 @@ function Weather() {
   }
   
   useEffect(() => {
-    var gapNewsGetTime = new Date(new Date() - new Date(lastTimeWeatherCityGet));
-    var diffDay = gapNewsGetTime.getUTCDate() - 1
-    var diffHour = gapNewsGetTime.getUTCHours()
+    const gapNewsGetTime = new Date(new Date() - new Date(lastTimeWeatherCityGet));
+    const diffDay = gapNewsGetTime.getUTCDate() - 1
+    const diffHour = gapNewsGetTime.getUTCHours()
     if (!definedWeatherCities || diffDay || diffHour >= REFRESHWEATHERCITIES) {    
       requestUpdateWeatherCities()
     }

@@ -83,9 +83,9 @@ function News() {
   }
 
   useEffect(() => {
-    var gapNewsGetTime = new Date(new Date() - new Date(lastTimeNewsGet));
-    var diffDay = gapNewsGetTime.getUTCDate() - 1
-    var diffHour = gapNewsGetTime.getUTCHours()
+    const gapNewsGetTime = new Date(new Date() - new Date(lastTimeNewsGet));
+    const diffDay = gapNewsGetTime.getUTCDate() - 1
+    const diffHour = gapNewsGetTime.getUTCHours()
     if (!news.articles || diffDay || diffHour) {    
       requestUpdateNews(country)
     }

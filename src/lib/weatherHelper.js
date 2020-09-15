@@ -25,12 +25,55 @@ import mostly_clear_night from '../assets/icons/wether/mostly_clear_night.svg'
 import clear_day from '../assets/icons/wether/clear_day.svg'
 import clear_night from '../assets/icons/wether/clear_night.svg'
 
-function isNowDay(){
-  const hour = new Date().getHours()
+const LOCATIONERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/location/time-zone/'
+
+function isNowDay(currentTime){
+  const hour = currentTime.getHours()
   return (hour > 4 && hour < 18)
 }
 
-export function weatherDescriptionImage(weatherCode) {
+const CacheLocationInformation = new Map()
+
+async function requestUpdateLocationInformationCache(latitude, longitude) {
+  const url = `${LOCATIONERVICE}${latitude}/${longitude}`
+  let response = await fetch(url);
+  const body = await response.json()
+  CacheLocationInformation.set(`${latitude},${longitude}`, {createTime: new Date(), resource: body})
+}
+
+async function locationInformation(latitude, longitude) {
+  const key = `${latitude},${longitude}`
+  if (CacheLocationInformation.has(key)) {
+    const locationInformation = CacheLocationInformation.get(key)
+    const gapNewsGetTime = new Date(new Date() - new Date(locationInformation.createTime))
+    const diffDay = gapNewsGetTime.getUTCDate() - 1
+    const diffHour = gapNewsGetTime.getUTCHours()
+    if (diffDay || diffHour) {
+      await requestUpdateLocationInformationCache(latitude, longitude)
+    }
+    return locationInformation.resource
+  }
+  await requestUpdateLocationInformationCache(latitude, longitude)
+  return CacheLocationInformation.get(key).resource
+}
+
+export async function gmtOffset(latitude, longitude) {
+  const gmtInformation = await locationInformation(latitude, longitude)
+  return gmtInformation.gmtOffset
+}
+
+export async function locationInformationTime(latitude, longitude) {
+  const gmtInformation = await locationInformation(latitude, longitude)
+  return new Date(gmtInformation.formatted)
+}
+
+export function localeDateTime(dateTimeUTC, offSet) {
+  const tzDifference = offSet * 60 + dateTimeUTC.getTimezoneOffset()
+  const offSetDateTime = new Date(dateTimeUTC.getTime() + tzDifference * 60 * 1000)
+  return offSetDateTime
+}
+
+export function weatherDescriptionImage(weatherCode, currentTime) {
   switch(weatherCode) {
     case 'rain_heavy':
       return {description: 'Substantial rain', image: rain_heavy}
@@ -73,11 +116,11 @@ export function weatherDescriptionImage(weatherCode) {
     case 'mostly_cloudy':
       return {description: 'Mostly cloudy', image: mostly_cloudy}
     case 'partly_cloudy':
-      return {description: 'Partly cloudy', image: isNowDay() ? partly_cloudy_day : partly_cloudy_night}
+      return {description: 'Partly cloudy', image: isNowDay(currentTime) ? partly_cloudy_day : partly_cloudy_night}
     case 'mostly_clear':
-      return {description: 'Mostly clear', image: isNowDay() ? mostly_clear_day : mostly_clear_night }
+      return {description: 'Mostly clear', image: isNowDay(currentTime) ? mostly_clear_day : mostly_clear_night }
     case 'clear':
-      return {description: 'Clear, sunny', image: isNowDay() ? clear_day : clear_night}
+      return {description: 'Clear, sunny', image: isNowDay(currentTime) ? clear_day : clear_night}
     default:
       return {description: '-', image: clear_day}
   }
@@ -94,7 +137,7 @@ export function convertTemperatureUnits(units) {
 }
 
 export function shortHandDay(day) {
-  var weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   return weekday[day]
 }
 

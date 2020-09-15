@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { ButtonGroup, Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-import { weatherDescriptionImage, convertTemperatureUnits, convertTemperature } from '../lib/weatherHelper'
+import { weatherDescriptionImage, convertTemperatureUnits, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../lib/weatherHelper'
 
 import useLocalStorage from '../Hooks/UseLocalStorage'
 import { useWeather } from '../Hooks/WeatherContext'
@@ -29,7 +29,7 @@ function WeatherNowCast() {
   const [weatherContext, setWeatherContext] = useWeather()
   const [ , setLocalTemperatureUnits] = useLocalStorage('temperatureUnits', '°C')
   const [weatherCode, setWeatherCode] = useState('clear')
-  const [weatherDescription, setWeatherDescription] = useState(weatherDescriptionImage('clear').description)
+  const [weatherDescription, setWeatherDescription] = useState(weatherDescriptionImage('clear', new Date()).description)
   const [temperature, setTemperature] = useState(0)
   const [temperatureUnits, setTemperatureUnits] = useState(weatherContext.temperatureUnits)
   const [feelsLikeTemperature, setFeelsLikeTemperature] = useState(0)
@@ -43,6 +43,7 @@ function WeatherNowCast() {
   const [humidty, setHumidty] = useState('0%')
   const [windSpeed, setWindSpeed] = useState('0 m/s')
   const [observationTime, setObservationTime] = useState(new Date())
+  const [weatherTimeForImage, setWeatherTimeForImage] = useState(new Date())
 
   function setRenderTemperature(sourceTemperature, sourceTemperatureUnits) {
     if (displayCelsius) {
@@ -67,19 +68,22 @@ function WeatherNowCast() {
   function requestWeatherNowcast({latitude, longitude}) {
     fetch(`${WEATHERSERVICE}${DEFINEDWEATHERNOWCAST}/${latitude}/${longitude}`)
       .then((response) => response.json())
-      .then((data) => {
+      .then(async (data) => {
+        const offSetSeconds = await gmtOffset(latitude, longitude)
+        const informationTime = await locationInformationTime(latitude, longitude)
+        setWeatherTimeForImage(informationTime)
         setWeatherCode(data.weather_code.value)
-        setWeatherDescription(weatherDescriptionImage(data.weather_code.value).description)
+        setWeatherDescription(weatherDescriptionImage(data.weather_code.value, informationTime).description)
         setRenderTemperature(+data.temp.value, data.temp.units)
         setRenderFeelsLikeTemperature(+data.feels_like.value, data.feels_like.units)
-        setSunrise(new Date(data.sunrise.value))
-        setSunset(new Date(data.sunset.value))
+        setSunrise(localeDateTime(new Date(data.sunrise.value), offSetSeconds/3600))
+        setSunset(localeDateTime(new Date(data.sunset.value), offSetSeconds/3600))
         setPressure(`${data.baro_pressure.value} ${data.baro_pressure.units}`)
         setPrecipitationType(data.precipitation_type.value)
         setPrecipitationValue(`${data.precipitation.value} ${data.precipitation.units}`)
         setHumidty(`${data.humidity.value} ${data.humidity.units}`)
         setWindSpeed(`${data.wind_speed.value} ${data.wind_speed.units}`)
-        setObservationTime(new Date(data.observation_time.value))
+        setObservationTime(localeDateTime(new Date(data.observation_time.value), offSetSeconds/3600))
       })
       .catch((err) => console.log(err))
   }
@@ -123,7 +127,7 @@ function WeatherNowCast() {
                 <Image
                   width={'30rem'}
                   height={'30rem'}
-                  src={weatherDescriptionImage(weatherCode).image}
+                  src={weatherDescriptionImage(weatherCode, weatherTimeForImage).image}
                   alt={weatherCode}
                   style={{marginLeft: '1rem'}}
                   data-tip data-for="observationTimeToolTip"
