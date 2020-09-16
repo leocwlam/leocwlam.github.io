@@ -12,8 +12,15 @@ import { useWeather } from '../Hooks/WeatherContext'
 const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
 const DEFINEDWEATHERNOWCAST = 'weather/nowcast'
 
+const WEATHERICONWIDTH = '30rem'
+
 const Styles = styled.div`
-  .weatherNowcast{
+  .weatherNowSession {
+    display: flex;
+    text-align: center;
+  }
+
+  .weatherNowcast {
     display: flex;
     color: black;
     font-size: x-small;
@@ -22,6 +29,27 @@ const Styles = styled.div`
     align-items: flex-start;
     margin-top: .7rem;
     margin-left: .3rem;
+    text-align: left;
+  }
+
+  .weatherImage {
+    display: flex;
+    margin-left: 1rem;
+  }
+
+  .weatherImageDescription {
+    text-align: center;
+    font-size: xx-small;
+    color: #22222c;
+    align-self: center;
+  }
+
+  .weatherTemperature {
+    color: #98732dd1;
+  }
+
+  .weatherDescriptionSecondSession {
+    margin-left: 1rem;
   }
 `
 
@@ -118,27 +146,25 @@ function WeatherNowCast() {
 
   return (
     <Styles>
-      <div style={{display: 'flex'}}>
-        <div style= {{textAlign: 'center'}}>
+      <div className="weatherNowSession">
+        <div>
           <div style={{width: '6rem'}}>
-            <div style={{display: 'flex'}}>
+            <div className="weatherImage">
               <OverlayTrigger placement='right' delay={{ show: 250, hide: 400 }}
                     overlay={renderImageTooltip}>
                 <Image
-                  width={'30rem'}
-                  height={'30rem'}
+                  width={WEATHERICONWIDTH}
                   src={weatherDescriptionImage(weatherCode, weatherTimeForImage).image}
                   alt={weatherCode}
-                  style={{marginLeft: '1rem'}}
                   data-tip data-for="observationTimeToolTip"
                   />
                 </OverlayTrigger >
-                <div style= {{textAlign: 'center', fontSize: 'xx-small', color:'#22222c', alignSelf: 'center'}}>
+                <div className="weatherImageDescription">
                   {weatherDescription}
                 </div>
             </div>
             <div>
-              <div style={{color: '#98732dd1'}}>
+              <div className="weatherTemperature">
                 {temperature.toFixed(2)}{convertTemperatureUnits(temperatureUnits)}
               </div>
               <ButtonGroup size='sm' toggle={true}>
@@ -163,15 +189,15 @@ function WeatherNowCast() {
               pressure: {pressure}
             </div>
           </div>
-          <div style={{marginLeft: '1rem'}}>
-            <div>
-              Precipitation: {precipitationType} {precipitationValue}
-            </div>
+          <div className="weatherDescriptionSecondSession">
             <div>
               Humidity: {humidty}
             </div>
             <div>
               Wind: {windSpeed}
+            </div>
+            <div>
+              Precipitation: {precipitationType} {precipitationValue}
             </div>
           </div>
         </div>

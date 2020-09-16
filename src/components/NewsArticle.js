@@ -3,6 +3,9 @@ import styled from 'styled-components'
 
 import { Media } from 'react-bootstrap'
 
+const NEWSIMAGEWIDTH = 385
+const NEWSIMAGEHEIGHT = 150
+
 const Styles = styled.div`
   .mediaBody {
     background-color: white;
@@ -30,13 +33,13 @@ function NewsArticle(props) {
         if (urlToImage) {
           return (
             <img
-              width={385}
-              height={150}
+              width={NEWSIMAGEWIDTH}
+              height={NEWSIMAGEHEIGHT}
               className="mx-auto"
               src={urlToImage}
               alt="Generic placeholder"
             />
-          );
+          )
         }
       })()}
       <Media.Body>
@@ -54,7 +57,7 @@ function NewsArticle(props) {
         </div>
       </Media.Body>
     </Styles>
-  );
+  )
 }
 
 NewsArticle.defaultProps = {

@@ -55,6 +55,20 @@ const Styles = styled.div`
     font-size: larger;
     color: orange;
   }
+
+  .newsSelectorSession {
+    display: flex;
+    align-items: center;
+    margin-left: 0.3rem;
+  }
+  
+  .newsSelector {
+    margin-left: 0.5rem;
+  }
+
+  .newsSelectorFormControl {
+    width: 20rem;
+  }
 `
 
 function News() {
@@ -100,12 +114,11 @@ function News() {
   return (
     <Styles>
       <h3 className="title">
-        <div style={{display: 'flex', alignItems: 'center', marginLeft: '0.3rem'}}>
+        <div className="newsSelectorSession">
           <div>News</div>
-          <div style={{marginLeft: '0.5rem'}}>
+          <div className="newsSelector">
             <select
-              className="form-control"
-              style={{ width: 320 }}
+              className="form-control newsSelectorFormControl"
               onChange={handleCountryChange}
               value={country}
               >

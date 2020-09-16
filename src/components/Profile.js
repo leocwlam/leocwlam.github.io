@@ -18,6 +18,9 @@ const EMAILADDRESS = 'leocwlam@gmail.com'
 const LINKEDINURL = 'https://www.linkedin.com/in/leocwlam/'
 const GITHUBURL = 'https://github.com/leocwlam/'
 
+
+const PROFILEVIDEOWIDTH = 320
+
 const CONTACTIMAGES = [
   contactImage,
   contactImage2,
@@ -56,6 +59,9 @@ const Styles = styled.div`
   .cardImageIcon {
     width: 2rem;
   }
+  .cardBody {
+    width: 45rem;
+  }
 `
 
 function Profile(props) {
@@ -67,7 +73,7 @@ function Profile(props) {
       );
     } else {
       return (
-        <video width="320" autoPlay loop>
+        <video width={PROFILEVIDEOWIDTH} autoPlay loop>
           <source src={coffeeTimeMoive} type="video/mp4" />
             Your browser does not support the video tag.
         </video>
@@ -114,7 +120,7 @@ function Profile(props) {
         <Carousel.Item className={(props.isContact) ? "carouselContactItem" : "carouselProfileItem"}>
           <Card border="light" className="carouselCard">
             <Card.Header>Leo Lam</Card.Header>
-            <Card.Body style={{ width: '45rem' }}>
+            <Card.Body className="cardBody">
               {renderProfilePresent()}
               {renderContent()}
             </Card.Body>

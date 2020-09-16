@@ -10,8 +10,14 @@ import { useWeather } from '../Hooks/WeatherContext'
 const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
 const DEFINEDWEATHERFUTURECAST = 'weather/futurecast'
 
+const WEATHERICONWIDTH = '30rem'
+
 const Styles = styled.div`
-  .weatherfuturecast{
+  .weatherFutureMainSession {
+    display: flex;
+  }
+
+  .weatherFuturecast {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -24,6 +30,23 @@ const Styles = styled.div`
     margin-left: .3rem;
     margin-right: .3rem;
     width: 100%;
+  }
+
+  .weatherImageSession {
+    display: flex;
+
+    div {
+      text-align: center;
+      font-size: xx-small;
+      color:#22222c;
+      align-self: center;
+    }
+  }
+
+  .weatherOtherInformationSession {
+    display: flex; 
+    color: #98732dd1;
+    font-size: medium;
   }
 `
 
@@ -89,19 +112,18 @@ function WeatherFutureCast() {
         <h6>
           {shortHandDay(day)}
         </h6>
-        <div style={{display: 'flex'}}>
+        <div className="weatherImageSession">
           <Image
-            width={'30rem'}
-            height={'30rem'}
+            width={WEATHERICONWIDTH}
             src={weatherDescriptionImage(weatherCode, weatherTimeForImage).image}
             alt={weatherCode}
             style={{marginLeft: '1rem'}}
             />
-          <div style= {{textAlign: 'center', fontSize: 'xx-small', color:'#22222c', alignSelf: 'center'}}>
+          <div>
             {weatherDescriptionImage(weatherCode, weatherTimeForImage).description}
           </div>
         </div>
-        <div style={{display: 'flex', color: '#98732dd1', fontSize: 'medium'}}>
+        <div className="weatherOtherInformationSession">
           <div>
             {temperatureMinimum.toFixed(2)}{convertTemperatureUnits(temperatureMinimumUnits)}
           </div>
@@ -130,14 +152,14 @@ function WeatherFutureCast() {
 
   return (
     <Styles>
-      <div style={{display: 'flex'}}>
-        <div className="weatherfuturecast">
+      <div className="weatherFutureMainSession">
+        <div className="weatherFuturecast">
           {renderFutureDay(futureFirstDay)}
         </div>
-        <div className="weatherfuturecast">
+        <div className="weatherFuturecast">
           {renderFutureDay(futureSecondDay)}
         </div>
-        <div className="weatherfuturecast">
+        <div className="weatherFuturecast">
           {renderFutureDay(futureThirdDay)}
         </div>
       </div>

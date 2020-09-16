@@ -36,11 +36,38 @@ const Styles = styled.div`
     text-align: right;
   }
 
+  .weatherSession{
+    display: flex;
+  }
+  
+  .weatherTitle{
+    align-self: center;
+    margin-left: 0.3rem;
+  }
+
   .weatherSelector {
     display: flex;
     font-size: small;
     align-items: center;
     margin-left: 0.2rem;
+  }
+
+  .weatherDropDown {
+    width: 9.5rem;
+  }
+
+  .latitudeLatlonMarginSession {
+    margin-left: 0.2rem;
+  }
+
+  .latitudeLatlonSession {
+    display: flex;
+    margin-top: 0.2rem;
+  }
+
+  .latitudeLatlonButton {
+    align-items: top;
+    width: 10rem;
   }
 `
 
@@ -207,28 +234,27 @@ function Weather() {
     <Styles>
         <h3 className='title'>
           <div>
-            <div style={{display: 'flex'}}>
-              <div style={{alignSelf: 'center', marginLeft: '0.3rem'}}>Weather</div>
+            <div className="weatherSession">
+              <div className="weatherTitle">Weather</div>
               <div className="weatherSelector">
                 <div>
                   <select
-                    className='form-control'
-                    style={{ width: '9.5rem' }}
+                    className='form-control weatherDropDown'
                     onChange={handleCityChange}
                     value={weatherCity}
                     >
                     {optionItems}
                   </select>
                 </div>
-                <div style={{ marginLeft: '0.2rem' }}>
-                  <div style={{ display: 'flex', marginTop: '0.2rem'}}>
+                <div className="latitudeLatlonMarginSession">
+                  <div className="latitudeLatlonSession">
                     <div>
                       <label>
                         <input name='latitude' value={latitude} className='latlon' disabled={disabledLatitudeLongitude} onChange={handleLatitudeChange}/>
                         °N
                       </label>
                     </div>
-                    <div style={{ marginLeft: '.1rem'}} >
+                    <div className="latitudeLatlonMarginSession" >
                       <label>
                         <input name='longitude' value={longitude} className='latlon' disabled={disabledLatitudeLongitude} onChange={handleLongitudeChange}/>
                         °E
@@ -236,7 +262,9 @@ function Weather() {
                     </div>
                   </div>
                   <div>
-                    <Button variant='outline-primary' size='sm' style={{ alignItems: 'top', width: '10rem' }} disabled={ disabledLatitudeLongitude } onClick={ handleGeolocation }>Your Geolocation</Button>
+                    <Button variant='outline-primary' size='sm' className="latitudeLatlonButton" disabled={ disabledLatitudeLongitude } onClick={ handleGeolocation }>
+                      Your Geolocation
+                    </Button>
                   </div>
                 </div>
               </div>

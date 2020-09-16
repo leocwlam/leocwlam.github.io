@@ -55,7 +55,7 @@ function Header(){
         </Container>
       </Jumbo>
     </Styles>
-  );
+  )
 }
 
 export default Header

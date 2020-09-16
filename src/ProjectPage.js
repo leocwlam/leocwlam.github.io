@@ -31,23 +31,30 @@ const Styles = styled.div`
     font-family: sans-serif;
     // overflow-y: auto;
   }
+  .scrollspyArea {
+    background-color: #515151;
+    margin: 0;
+  }
   .scrollspy {
     background-color: #262323;
     opacity: 1;
-    margin: 0px;
-    margin-top: 130px;
-    width: 250px;
+    margin: 0;
+    margin-top: 8rem;
+    width: 15rem;
     // top: 100px;
     // right: 80px;
     // position: absolute;
   }
+  .scrollspyLanguageSession {
+    margin: -15px;
+  }
   ul {
     list-style: none;
-    margin: 0px;
+    margin: 0;
   }
   li {
-    margin: 5px;
-    padding: 2px;
+    margin: .3rem;
+    padding: .1rem;
   }
   .isCurrent {
     font-weight: bold;
@@ -75,7 +82,6 @@ function ProjectPage() {
         <Media>
           <img
             width={64}
-            height={64}
             className="mr-3"
             src={projectIcon(type)}
             alt={project}
@@ -145,7 +151,7 @@ function ProjectPage() {
               </div>
             </section>
           </div>
-          <div style={{ backgroundColor: "#515151", margin: 0 }}>
+          <div className="scrollspyArea">
             <Scrollspy
               className="scrollspy"
               items={[
@@ -161,8 +167,7 @@ function ProjectPage() {
               <ul className="nav">
                 <li className="nav-item">
                   <a
-                    className="nav-link"
-                    style={{ margin: -15 }}
+                    className="nav-link scrollspyLanguageSession"
                     href="#javaScript-area"
                   >
                     JavaScript
@@ -183,8 +188,7 @@ function ProjectPage() {
                 </div>
                 <li className="nav-item">
                   <a
-                    className="nav-link"
-                    style={{ margin: -15 }}
+                    className="nav-link scrollspyLanguageSession"
                     href="#typeScript-area"
                   >
                     TypeScript
@@ -203,7 +207,7 @@ function ProjectPage() {
         </Container>
       </Jumbo>
     </Styles>
-  );
+  )
 }
 
 export default ProjectPage

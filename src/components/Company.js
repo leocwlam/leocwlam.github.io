@@ -100,7 +100,7 @@ function Company() {
         </Card.Body>
       </Card>
     </Styles>
-  );
+  )
 }
 
 export default Company

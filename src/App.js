@@ -77,7 +77,7 @@ function App() {
         </div>
       </BrowserRouter>
     </Styles>
-  );
+  )
 }
 
 export default App
