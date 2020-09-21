@@ -52,9 +52,10 @@ const Styles = styled.div`
 
 function WeatherFutureCast() {
   const [weatherContext, ] = useWeather()
-  const [futureFirstDay, setfutureFirstDay] = useState({day: 0, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
-  const [futureSecondDay, setfutureSecondDay] = useState({day: 1, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
-  const [futureThirdDay, setfutureThirdDay] = useState({day: 2, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
+  const [todayLocalTime, setTodayLocalTime] = useState(new Date())
+  const [todayDay, setTodayDay] = useState({day: 0, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
+  const [futureFirstDay, setfutureFirstDay] = useState({day: 1, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
+  const [futureSecondDay, setfutureSecondDay] = useState({day: 2, weatherCode: 'clear', temperatureMinimum: 0, temperatureMinimumUnits: 'C', temperatureMaximum: 0, temperatureMaximumUnits: 'C', sunrise: new Date(), sunset: new Date()})
   const [weatherTimeForImage, setWeatherTimeForImage] = useState(new Date())
 
   function temperatureValue(temperature, temperatureUnits, requestDisplayTemperatureUnits) {
@@ -74,8 +75,19 @@ function WeatherFutureCast() {
       .then(async (data) => {
         const offSetSeconds = await gmtOffset(latitude, longitude)
         const informationTime = await locationInformationTime(latitude, longitude)
-        const todayDay = informationTime.getDay();
+        const todayDay = informationTime.getDay()
+        setTodayLocalTime(todayDay)
         setWeatherTimeForImage(informationTime)
+
+        setTodayDay({day: ((todayDay+0)%7),
+          weatherCode: data[0].weather_code.value,
+          temperatureMinimum: temperatureValue(data[0].temp[0].min.value, data[0].temp[0].min.units, weatherContext.temperatureUnits),
+          temperatureMinimumUnits: weatherContext.temperatureUnits,
+          temperatureMaximum: temperatureValue(data[0].temp[1].max.value, data[0].temp[1].max.units, weatherContext.temperatureUnits),
+          temperatureMaximumUnits: weatherContext.temperatureUnits,
+          sunrise: localeDateTime(new Date(data[0].sunrise.value), offSetSeconds/3600),
+          sunset: localeDateTime(new Date(data[0].sunset.value), offSetSeconds/3600)})
+
         setfutureFirstDay({day: ((todayDay+1)%7),
           weatherCode: data[1].weather_code.value,
           temperatureMinimum: temperatureValue(data[1].temp[0].min.value, data[1].temp[0].min.units, weatherContext.temperatureUnits),
@@ -93,15 +105,6 @@ function WeatherFutureCast() {
           temperatureMaximumUnits: weatherContext.temperatureUnits,
           sunrise: localeDateTime(new Date(data[2].sunrise.value), offSetSeconds/3600),
           sunset: localeDateTime(new Date(data[2].sunset.value), offSetSeconds/3600)})
-
-        setfutureThirdDay({day: ((todayDay+3)%7),
-          weatherCode: data[3].weather_code.value,
-          temperatureMinimum: temperatureValue(data[3].temp[0].min.value, data[3].temp[0].min.units, weatherContext.temperatureUnits),
-          temperatureMinimumUnits: weatherContext.temperatureUnits,
-          temperatureMaximum: temperatureValue(data[3].temp[1].max.value, data[3].temp[1].max.units, weatherContext.temperatureUnits),
-          temperatureMaximumUnits: weatherContext.temperatureUnits,
-          sunrise: localeDateTime(new Date(data[3].sunrise.value), offSetSeconds/3600),
-          sunset: localeDateTime(new Date(data[3].sunset.value), offSetSeconds/3600)})
       })
       .catch((err) => console.log(err))
   }
@@ -110,14 +113,15 @@ function WeatherFutureCast() {
     return (
       <>
         <h6>
-          {shortHandDay(day)}
+          { (() => {
+            return (day === ((todayLocalTime+0)%7)) ? 'Today': shortHandDay(day)       
+          })()}
         </h6>
         <div className="weatherImageSession">
           <Image
             width={WEATHERICONWIDTH}
             src={weatherDescriptionImage(weatherCode, weatherTimeForImage).image}
             alt={weatherCode}
-            style={{marginLeft: '1rem'}}
             />
           <div>
             {weatherDescriptionImage(weatherCode, weatherTimeForImage).description}
@@ -154,13 +158,13 @@ function WeatherFutureCast() {
     <Styles>
       <div className="weatherFutureMainSession">
         <div className="weatherFuturecast">
+          {renderFutureDay(todayDay)}
+        </div>
+        <div className="weatherFuturecast">
           {renderFutureDay(futureFirstDay)}
         </div>
         <div className="weatherFuturecast">
           {renderFutureDay(futureSecondDay)}
-        </div>
-        <div className="weatherFuturecast">
-          {renderFutureDay(futureThirdDay)}
         </div>
       </div>
     </Styles>
