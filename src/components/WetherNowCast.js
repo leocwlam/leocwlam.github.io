@@ -13,6 +13,8 @@ const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK2
 const DEFINEDWEATHERNOWCAST = 'weather/nowcast'
 
 const WEATHERICONWIDTH = '30rem'
+const HIDESUNRISEINFORMAITON = false
+const HIDESUNSETINFORMAITON = false
 
 const Styles = styled.div`
   .weatherNowSession {
@@ -35,6 +37,7 @@ const Styles = styled.div`
   .weatherImage {
     display: flex;
     margin-left: 1rem;
+    width: 6rem;
   }
 
   .weatherImageDescription {
@@ -48,8 +51,14 @@ const Styles = styled.div`
     color: #98732dd1;
   }
 
+  .weatherDescriptionFirstSession {
+    margin-left: .3rem;
+    width:8.2rem;
+  }
+
   .weatherDescriptionSecondSession {
     margin-left: 1rem;
+    width:8.2rem;
   }
 `
 
@@ -68,8 +77,12 @@ function WeatherNowCast() {
   const [pressure, setPressure] = useState('0 hPa')
   const [precipitationType, setPrecipitationType] = useState('none')
   const [precipitationValue, setPrecipitationValue] = useState('0 mm/hr')
+  const [visibility, setVisibility] = useState('0 km')
+  const [surfaceShortwaveRadiation, setSurfaceShortwaveRadiation] = useState('0 w/sqm')
   const [humidty, setHumidty] = useState('0%')
+  const [windGust, setWindGust] = useState('0 m/s')
   const [windSpeed, setWindSpeed] = useState('0 m/s')
+  const [windDirection, setWindDirection] = useState('0 degrees')
   const [observationTime, setObservationTime] = useState(new Date())
   const [weatherTimeForImage, setWeatherTimeForImage] = useState(new Date())
 
@@ -110,6 +123,10 @@ function WeatherNowCast() {
         setPrecipitationType(data.precipitation_type.value)
         setPrecipitationValue(`${data.precipitation.value} ${data.precipitation.units}`)
         setHumidty(`${data.humidity.value} ${data.humidity.units}`)
+        setVisibility(`${data.visibility.value} ${data.visibility.units}`)
+        setSurfaceShortwaveRadiation(`${data.surface_shortwave_radiation.value.toFixed(2)} ${data.surface_shortwave_radiation.units}`)
+        setWindDirection(`${data.wind_direction.value} ${data.wind_direction.units}`)
+        setWindGust(`${data.wind_gust.value} ${data.wind_gust.units}`)
         setWindSpeed(`${data.wind_speed.value} ${data.wind_speed.units}`)
         setObservationTime(localeDateTime(new Date(data.observation_time.value), offSetSeconds/3600))
       })
@@ -148,7 +165,7 @@ function WeatherNowCast() {
     <Styles>
       <div className="weatherNowSession">
         <div>
-          <div style={{width: '6rem'}}>
+          <div>
             <div className="weatherImage">
               <OverlayTrigger placement='right' delay={{ show: 250, hide: 400 }}
                     overlay={renderImageTooltip}>
@@ -175,29 +192,47 @@ function WeatherNowCast() {
           </div>
         </div>
         <div className='weatherNowcast'>
-          <div>
+          <div className="weatherDescriptionFirstSession">
             <div>
               Feels Like: {feelsLikeTemperature.toFixed(2)}{convertTemperatureUnits(feelsLikeTemperatureUnits)}
             </div>
             <div>
-              Sunrise: {sunrise.toLocaleString()}
+              { (() => {
+                return (HIDESUNRISEINFORMAITON) ? `Sunrise: ${sunrise.toLocaleString()}` : ''
+              })()}
             </div>
             <div>
-              Sunset: {sunset.toLocaleString()}
+              { (() => {
+                return (HIDESUNSETINFORMAITON) ? `Sunset: ${sunset.toLocaleString()}` : ''
+              })()}
             </div>
-            <div>
-              pressure: {pressure}
-            </div>
-          </div>
-          <div className="weatherDescriptionSecondSession">
             <div>
               Humidity: {humidty}
             </div>
             <div>
-              Wind: {windSpeed}
+              Pressure: {pressure}
             </div>
             <div>
-              Precipitation: {precipitationType} {precipitationValue}
+              SW radiation: {surfaceShortwaveRadiation}
+            </div>
+          </div>
+          <div className="weatherDescriptionSecondSession">
+            <div>
+              Visibility: {visibility}
+            </div>
+            <div>
+              Wind Speed: {windSpeed}
+            </div>
+            <div>
+              Wind Direction: {windDirection}
+            </div>
+            <div>
+              Wind Gust: {windGust}
+            </div>
+            <div>
+              { (() => {
+                return (precipitationType !== 'none') ? `Precipitation: ${precipitationType} ${precipitationValue}` : ''
+              })()}
             </div>
           </div>
         </div>
