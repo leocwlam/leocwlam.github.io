@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { Button } from 'react-bootstrap'
 import { store } from 'react-notifications-component'
 
-import useLocalStorage from '../Hooks/UseLocalStorage'
-import { useWeather } from '../Hooks/WeatherContext'
+import useLocalStorage from '../../Hooks/UseLocalStorage'
+import { useWeather } from '../../Hooks/WeatherContext'
 
 import WetherNowCast from './WetherNowCast'
 import WeatherFutureCast from './WeatherFutureCast'

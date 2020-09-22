@@ -8,8 +8,8 @@ import profileBackgroundImage from './assets/backgrounds/profile.jpg'
 import WeatherProvider from './Hooks/WeatherContext'
 
 import Profile from './components/Profile'
-import Weather from './components/Weather'
-import News from './components/News'
+import Weather from './components/weather/Weather'
+import News from './components/news/News'
 
 const Styles = styled.div`
 

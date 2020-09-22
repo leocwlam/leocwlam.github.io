@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 import { Image} from 'react-bootstrap'
 
-import { weatherDescriptionImage, convertTemperatureUnits, shortHandDay, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../lib/weatherHelper'
-import { useWeather } from '../Hooks/WeatherContext'
+import { weatherDescriptionImage, convertTemperatureUnits, shortHandDay, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../../lib/weatherHelper'
+import { useWeather } from '../../Hooks/WeatherContext'
 
 const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
 const DEFINEDWEATHERFUTURECAST = 'weather/futurecast'

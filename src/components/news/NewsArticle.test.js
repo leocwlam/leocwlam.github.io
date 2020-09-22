@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import newsData from '../__tests__/news-data'
+import newsData from '../../__tests__/news-data'
 
 import NewsArticle from './NewsArticle'
 

@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 import { ButtonGroup, Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-import { weatherDescriptionImage, convertTemperatureUnits, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../lib/weatherHelper'
+import { weatherDescriptionImage, convertTemperatureUnits, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../../lib/weatherHelper'
 
-import useLocalStorage from '../Hooks/UseLocalStorage'
-import { useWeather } from '../Hooks/WeatherContext'
+import useLocalStorage from '../../Hooks/UseLocalStorage'
+import { useWeather } from '../../Hooks/WeatherContext'
 
 const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
 const DEFINEDWEATHERNOWCAST = 'weather/nowcast'
