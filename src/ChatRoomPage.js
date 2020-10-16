@@ -3,16 +3,14 @@ import React from 'react'
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
 import styled from 'styled-components'
 
-import profileLeoImage from './assets/backgrounds/profile-leo.jpg'
-
-import Profile from './components/Profile'
+import chatRoomGateImage from './assets/backgrounds/chat-room-gate.jpg'
 
 import RoomMenu from './components/chat-room/RoomMenu'
 import ChatDetail from './components/chat-room/ChatDetail'
 
 const Styles = styled.div`
   .jumboContentBase {
-    background: url(${profileLeoImage}) no-repeat;
+    background: url(${chatRoomGateImage}) no-repeat fixed center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -30,16 +28,21 @@ const Styles = styled.div`
   }
 `
 
-function ContactPage() {
+function ChatRoomPage() {
   return (
     <Styles>
       <Jumbo fluid className="jumboContentBase">
         <Container className="generalLayout">
-          <Profile isContact={true} />
+          <div className="roomMenu">
+              <RoomMenu/>
+          </div>
+          <div>
+              <ChatDetail/>
+          </div>
         </Container>
       </Jumbo>
     </Styles>
   )
 }
 
-export default ContactPage
+export default ChatRoomPage

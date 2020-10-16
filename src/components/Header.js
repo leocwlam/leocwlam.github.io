@@ -48,6 +48,8 @@ function Header(){
             {" | "}
             <NavLink activeStyle={activeStyle} to="/open-source">Passion</NavLink>
             {" | "}
+            <NavLink activeStyle={activeStyle} to="/chat-room">Chat Room</NavLink>
+            {" | "}
             <NavLink activeStyle={activeStyle} to="/contact">Contact</NavLink>
           </nav>
         </Container>
