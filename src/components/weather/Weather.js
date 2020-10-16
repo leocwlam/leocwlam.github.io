@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { Button } from 'react-bootstrap'
-import { store } from 'react-notifications-component'
+import { showAlertMessage } from '../../lib/notificationsHelper'
 
-import useLocalStorage from '../../Hooks/UseLocalStorage'
-import { useWeather } from '../../Hooks/WeatherContext'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { useWeather } from '../../hooks/WeatherContext'
 
 import WetherNowCast from './WetherNowCast'
 import WeatherFutureCast from './WeatherFutureCast'
@@ -84,37 +84,12 @@ function Weather() {
   let optionItems = []
 
   function showGeolocationWarningMessage(message, width) {
-    store.addNotification ({
-      title: 'Warning',
-      message: message,
-      type: 'warning',
-      insert: 'top',
-      container: 'top-right',
-      animationIn: ['animated', 'fadeIn'],
-      animationOut: ['animated', 'fadeOut'],
-      dismiss: {
-        duration: 1500,
-        onScreen: true
-      },
-      width
-    })
+    showAlertMessage({type:'warning', title: 'Warning', message, width, duration: 1500})
   }
 
   function showCanUseGeolocationMessage(width) {
-    store.addNotification ({
-      title: 'Information',
-      message: 'Click Geolocation button  Or  Enter latitude & longitude',
-      type: 'info',
-      insert: 'top',
-      container: 'top-right',
-      animationIn: ['animated', 'fadeIn'],
-      animationOut: ['animated', 'fadeOut'],
-      dismiss: {
-        duration: 5000,
-        onScreen: true
-      },
-      width
-    })
+    const message = 'Click Geolocation button  Or  Enter latitude & longitude'
+    showAlertMessage({type:'info', title: 'Information', message, width, duration: 5000})
   }
 
   function buildCitiesList(weatherCities) {

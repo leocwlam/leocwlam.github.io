@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import profileBackgroundImage from './assets/backgrounds/profile.jpg'
 
-import WeatherProvider from './Hooks/WeatherContext'
+import WeatherProvider from './hooks/WeatherContext'
 
 import Profile from './components/Profile'
 import Weather from './components/weather/Weather'
@@ -23,7 +23,7 @@ const Styles = styled.div`
   }
 
   .container {
-    display:  flex;
+    display: flex;
   }
 
   .ProfileSession{

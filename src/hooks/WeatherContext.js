@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 
-import useLocalStorage from '../Hooks/UseLocalStorage'
+import useLocalStorage from '../hooks/useLocalStorage'
 const WeatherContext = React.createContext()
 
 export function useWeather() {
