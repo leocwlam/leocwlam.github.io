@@ -1,35 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "41bc6071240e6ef2d9940a80624a12b6",
+    "revision": "2fcc0da54491ea753ea444bfa3502458",
     "url": "/index.html"
   },
   {
-    "revision": "40e90470d6db7650b09d",
+    "revision": "b85039353afa7e81d04b",
     "url": "/static/css/2.78bba519.chunk.css"
   },
   {
-    "revision": "f6e056080dd507b44d2a",
+    "revision": "6f4b67e566a1607e7e23",
     "url": "/static/css/main.55f37b80.chunk.css"
   },
   {
-    "revision": "40e90470d6db7650b09d",
-    "url": "/static/js/2.1aa5a58a.chunk.js"
+    "revision": "b85039353afa7e81d04b",
+    "url": "/static/js/2.63211dcd.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/static/js/2.1aa5a58a.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.63211dcd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f6e056080dd507b44d2a",
-    "url": "/static/js/main.0c4bbfb1.chunk.js"
+    "revision": "6f4b67e566a1607e7e23",
+    "url": "/static/js/main.03fba96c.chunk.js"
   },
   {
     "revision": "e9a05e386ba5a5e1cf29",
     "url": "/static/js/runtime-main.ce7ed91f.js"
-  },
-  {
-    "revision": "0765ef43e887595baacf05968d96a17d",
-    "url": "/static/media/chat-room-gate.0765ef43.jpg"
   },
   {
     "revision": "e3550f8b6cdc2c6ba5983cc0a546c7cb",
