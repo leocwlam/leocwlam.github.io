@@ -12,7 +12,6 @@ import styled from 'styled-components'
 import Header from './components/Header'
 import ProfilePage from './ProfilePage'
 import ProjectPage from './ProjectPage'
-import ChatRoomPage from './ChatRoomPage'
 import ContactPage from './ContactPage'
 import PageNotFoundPage from './PageNotFoundPage'
 
@@ -70,7 +69,6 @@ function App() {
           <Switch>
             <Route path="/" exact component={ProfilePage} />
             <Route path="/open-source" component={ProjectPage} />
-            <Route path="/chat-room" component={ChatRoomPage} />
             <Route path="/contact" component={ContactPage} />
             <Route component={PageNotFoundPage} />
           </Switch>
