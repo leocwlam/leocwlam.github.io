@@ -114,7 +114,7 @@ function WeatherFutureCast() {
       <>
         <h6>
           { (() => {
-            return (day === ((todayLocalTime+0)%7)) ? 'Today': shortHandDay(day)       
+            return (day === ((todayLocalTime+0)%7)) ? 'Today': shortHandDay(day)
           })()}
         </h6>
         <div className="weatherImageSession">

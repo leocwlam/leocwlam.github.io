@@ -64,7 +64,11 @@ export async function gmtOffset(latitude, longitude) {
 
 export async function locationInformationTime(latitude, longitude) {
   const gmtInformation = await locationInformation(latitude, longitude)
-  return new Date(gmtInformation.formatted)
+  const locateDateTime = new Date(gmtInformation.formatted)
+  if (isNaN(locateDateTime)) {
+    return new Date()
+  }
+  return locateDateTime
 }
 
 export function localeDateTime(dateTimeUTC, offSet) {
