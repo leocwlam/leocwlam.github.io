@@ -74,7 +74,13 @@ function WeatherFutureCast() {
       .then((response) => response.json())
       .then(async (data) => {
         const offSetSeconds = await gmtOffset(latitude, longitude)
-        const informationTime = await locationInformationTime(latitude, longitude)
+        let informationTime = new Date()
+        try {
+          informationTime = await locationInformationTime(latitude, longitude)
+        }
+        catch (err) {
+          console.log('Warning: Getting the local time', err)
+        }
         const todayDay = informationTime.getDay()
         setTodayLocalTime(todayDay)
         setWeatherTimeForImage(informationTime)

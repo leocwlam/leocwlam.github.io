@@ -41,9 +41,13 @@ async function requestUpdateLocationInformationCache(latitude, longitude) {
   CacheLocationInformation.set(`${latitude},${longitude}`, {createTime: new Date(), resource: body})
 }
 
+function isValidDateTime(dateTimeFormatted) {
+  return !isNaN(new Date(dateTimeFormatted))
+} 
+
 async function locationInformation(latitude, longitude) {
   const key = `${latitude},${longitude}`
-  if (CacheLocationInformation.has(key)) {
+  if (CacheLocationInformation.has(key) && isValidDateTime(CacheLocationInformation.get(key).resource.formatted)) {
     const locationInformation = CacheLocationInformation.get(key)
     const gapNewsGetTime = new Date(new Date() - new Date(locationInformation.createTime))
     const diffDay = gapNewsGetTime.getUTCDate() - 1
@@ -64,11 +68,10 @@ export async function gmtOffset(latitude, longitude) {
 
 export async function locationInformationTime(latitude, longitude) {
   const gmtInformation = await locationInformation(latitude, longitude)
-  const locateDateTime = new Date(gmtInformation.formatted)
-  if (isNaN(locateDateTime)) {
-    return new Date()
+  if (!isValidDateTime(gmtInformation.formatted)) {
+    throw new Error('Fail to get the local time')
   }
-  return locateDateTime
+  return new Date(gmtInformation.formatted)
 }
 
 export function localeDateTime(dateTimeUTC, offSet) {

@@ -111,7 +111,13 @@ function WeatherNowCast() {
       .then((response) => response.json())
       .then(async (data) => {
         const offSetSeconds = await gmtOffset(latitude, longitude)
-        const informationTime = await locationInformationTime(latitude, longitude)
+        let informationTime = new Date()
+        try {
+          informationTime = await locationInformationTime(latitude, longitude)
+        }
+        catch (err) {
+          console.log('Warning: Getting the local time', err)
+        }
         setWeatherTimeForImage(informationTime)
         setWeatherCode(data.weather_code.value)
         setWeatherDescription(weatherDescriptionImage(data.weather_code.value, informationTime).description)
