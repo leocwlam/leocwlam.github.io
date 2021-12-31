@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { ButtonGroup, Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-import { weatherDescriptionImage, convertTemperatureUnits, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../../lib/weatherHelper'
+import { weatherDescriptionImage, convertUV, convertTemperatureUnits, convertTemperature, localeDateTime, gmtOffset, locationInformationTime } from '../../lib/weatherHelper'
 
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { useWeather } from '../../hooks/WeatherContext'
@@ -79,6 +79,7 @@ function WeatherNowCast() {
   const [precipitationValue, setPrecipitationValue] = useState('0 mm/hr')
   const [visibility, setVisibility] = useState('0 km')
   const [surfaceShortwaveRadiation, setSurfaceShortwaveRadiation] = useState('0 w/sqm')
+  const [uv, setUV] = useState(convertUV(0))
   const [humidty, setHumidty] = useState('0%')
   const [windGust, setWindGust] = useState('0 m/s')
   const [windSpeed, setWindSpeed] = useState('0 m/s')
@@ -131,6 +132,7 @@ function WeatherNowCast() {
         setHumidty(`${data.humidity.value} ${data.humidity.units}`)
         setVisibility(`${data.visibility.value} ${data.visibility.units}`)
         setSurfaceShortwaveRadiation(`${data.surface_shortwave_radiation.value.toFixed(2)} ${data.surface_shortwave_radiation.units}`)
+        setUV(convertUV(data.uv.value))
         setWindDirection(`${data.wind_direction.value} ${data.wind_direction.units}`)
         setWindGust(`${data.wind_gust.value} ${data.wind_gust.units}`)
         setWindSpeed(`${data.wind_speed.value} ${data.wind_speed.units}`)
@@ -220,6 +222,9 @@ function WeatherNowCast() {
             </div>
             <div>
               SW radiation: {surfaceShortwaveRadiation}
+            </div>
+            <div>
+              UV: {uv}
             </div>
           </div>
           <div className="weatherDescriptionSecondSession">

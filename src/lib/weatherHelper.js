@@ -133,6 +133,28 @@ export function weatherDescriptionImage(weatherCode, currentTime) {
   }
 }
 
+export function convertUV(index) {
+  switch(index) {
+    case 0:
+    case 1:
+    case 2:
+      return 'Low'
+    case 3:
+    case 4:
+    case 5:
+      return 'Moderate'
+    case 6:
+    case 7:
+      return 'High'
+    case 8:
+    case 9:
+    case 10:
+      return 'Very High'
+    default:
+      return 'Extreme'
+  }
+}
+
 export function convertTemperatureUnits(units) {
   if (units.toLowerCase() === 'c') {
     return '°C'
