@@ -11,7 +11,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^4.6.1",
     "gh-pages": "^3.2.3",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.4",
