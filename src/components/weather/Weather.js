@@ -194,7 +194,7 @@ function Weather() {
   }
   
   useEffect(() => {
-    const gapNewsGetTime = new Date(new Date() - new Date(lastTimeWeatherCityGet));
+    const gapNewsGetTime = new Date(new Date() - new Date(lastTimeWeatherCityGet))
     const diffDay = gapNewsGetTime.getUTCDate() - 1
     const diffHour = gapNewsGetTime.getUTCHours()
     if (!definedWeatherCities || diffDay || diffHour >= REFRESHWEATHERCITIES) {    
