@@ -15,7 +15,7 @@ import ProjectPage from './ProjectPage'
 import ContactPage from './ContactPage'
 import PageNotFoundPage from './PageNotFoundPage'
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import plenioLightImage from './assets/backgrounds/plenio-light.jpg'
 
@@ -66,12 +66,12 @@ function App() {
           <Header />
         </div>
         <div className="container-fluid jumbo md-0" style= {{ 'minHeight': '47rem'}}>
-          <Switch>
-            <Route path="/" exact component={ProfilePage} />
-            <Route path="/open-source" component={ProjectPage} />
-            <Route path="/contact" component={ContactPage} />
-            <Route component={PageNotFoundPage} />
-          </Switch>
+          <Routes>
+            <Route path="/" exact element={<ProfilePage />} />
+            <Route path="/open-source" element={<ProjectPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route element={<PageNotFoundPage/>} />
+          </Routes>
         </div>
       </BrowserRouter>
     </Styles>
