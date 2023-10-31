@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import NewsArticle from './NewsArticle'
 
-const NEWSSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/top-headlines/'
+const NEWSSERVICE =
+  'https://yjymxw64uayrr4a6.anvil.app/CQ5QZK23NH3UZY7HIQCUN45R/_/api/top-headlines/'
 
 // Support couurty
 // ae ar at au be bg br ca ch cn co cu cz de eg fr gb gr hk hu id ie il in it jp kr lt lv ma mx my ng nl no nz ph pl pt ro rs ru sa se sg si sk th tr tw ua us ve za
 const COUNTRYMAP = new Map([
   ['US', 'us'],
-  ['Argentina','ar'],
+  ['Argentina', 'ar'],
   ['Australia', 'au'],
   ['Brazil', 'br'],
   ['Canada', 'ca'],
@@ -39,7 +40,7 @@ const COUNTRYMAP = new Map([
   ['Taiwan', 'tw'],
   ['Thailand', 'th'],
   ['Turkey', 'tr'],
-  ['UK', 'gb']
+  ['UK', 'gb'],
 ])
 
 const Styles = styled.div`
@@ -61,7 +62,7 @@ const Styles = styled.div`
     align-items: center;
     margin-left: 0.3rem;
   }
-  
+
   .newsSelector {
     margin-left: 0.5rem;
   }
@@ -72,7 +73,10 @@ const Styles = styled.div`
 `
 
 function News() {
-  const [lastTimeNewsGet, setLastTimeNewsGet] = useLocalStorage('lastTimeNewsGet', new Date())
+  const [lastTimeNewsGet, setLastTimeNewsGet] = useLocalStorage(
+    'lastTimeNewsGet',
+    new Date()
+  )
   const [news, setNews] = useLocalStorage('currentNews', { articles: null })
   const [country, setCountry] = useLocalStorage('country', 'us')
 
@@ -86,7 +90,7 @@ function News() {
   }
 
   function requestUpdateNews(coutryCode) {
-    setNews({ articles: [] })  // cleanup the old news
+    setNews({ articles: [] }) // cleanup the old news
     setLastTimeNewsGet(new Date())
     requestNews(coutryCode)
   }
@@ -97,10 +101,10 @@ function News() {
   }
 
   useEffect(() => {
-    const gapNewsGetTime = new Date(new Date() - new Date(lastTimeNewsGet));
+    const gapNewsGetTime = new Date(new Date() - new Date(lastTimeNewsGet))
     const diffDay = gapNewsGetTime.getUTCDate() - 1
     const diffHour = gapNewsGetTime.getUTCHours()
-    if (!news.articles || diffDay || diffHour) {    
+    if (!news.articles || diffDay || diffHour) {
       requestUpdateNews(country)
     }
   })
@@ -108,20 +112,24 @@ function News() {
   const optionItems = []
 
   COUNTRYMAP.forEach((value, key) => {
-    optionItems.push(<option key={key} value={value}>{key}</option>)
+    optionItems.push(
+      <option key={key} value={value}>
+        {key}
+      </option>
+    )
   })
 
   return (
     <Styles>
-      <h3 className="title">
-        <div className="newsSelectorSession">
+      <h3 className='title'>
+        <div className='newsSelectorSession'>
           <div>News</div>
-          <div className="newsSelector">
+          <div className='newsSelector'>
             <select
-              className="form-control newsSelectorFormControl"
+              className='form-control newsSelectorFormControl'
               onChange={handleCountryChange}
               value={country}
-              >
+            >
               {optionItems}
             </select>
           </div>
@@ -131,7 +139,7 @@ function News() {
         if (news.articles) {
           return news.articles.map((article, index) => {
             return <NewsArticle key={index} article={article} />
-          });
+          })
         }
       })()}
     </Styles>

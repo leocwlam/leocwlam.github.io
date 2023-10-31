@@ -13,7 +13,7 @@ import WeatherFutureCast from './WeatherFutureCast'
 
 const DECIMALREGEX = /^-?\d*\.?\d*$/;
 
-const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/_/private_api/CQ5QZK23NH3UZY7HIQCUN45R/'
+const WEATHERSERVICE = 'https://yjymxw64uayrr4a6.anvil.app/CQ5QZK23NH3UZY7HIQCUN45R/_/api/'
 const DEFINEDWEATHERCITIES = 'weather/cities'
 const REFRESHWEATHERCITIES = 12
 
